@@ -8,6 +8,6 @@ Pode ver todas as atividades passadas por elex nesse repositório.
 | -------------------------- | --------------------------------------------- |
 | Técnicas de Programação I  | [Atividades](Tecnicas_Programacao/1SEMETRE/)  |
 | Técnicas de Programação II | [Atividades](Tecnicas_Programacao/2SEMESTRE/) |
-| Dispositivos Móveis I      | [Atividades](Mobile/)                         |
+| Dispositivos Móveis I      | [Atividades](Mobile//1SEMETRE/)               |
 
 A [Fatec PG](https://fatecpg.edu.br/), oferece os cursos supiores tecnológicos.
