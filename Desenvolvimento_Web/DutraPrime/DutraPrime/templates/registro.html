@@ -1,0 +1,26 @@
+{% extends "base.html" %} 
+
+{% block conteudo %}
+
+<form
+  action="{% url 'register' %}"
+  method="post"
+  class="flex flex-col gap-4 mt-3"
+>
+  {% if messages %} 
+    {% for message in messages %}
+      <div class="bg-red-400 p-4 rounded-xl">
+        {{ message }}
+      </div>
+    {% endfor %}
+  {% endif %}
+  <h1 class="text-bold text-2xl">Registre-se</h1>
+  {% csrf_token %} {{ form.as_p }}
+  <input
+    type="submit"
+    value="Cadastrar"
+    class="bg-indigo-700 text-center text-white p-2 rounded"
+  />
+</form>
+
+{% endblock %}
