@@ -1,0 +1,19 @@
+{% extends "base.html" %} 
+
+{% block conteudo%}
+
+<form action="{% url 'login' %}" method="post" class="flex flex-col gap-4 mt-3">
+  {% csrf_token %} {{ form.as_p }}
+  <input
+    type="submit"
+    value="Entrar"
+    class="bg-indigo-700 text-center text-white p-2 rounded"
+  />
+</form>
+<br />
+<p class="text-center">
+  Não tem Login?
+  <a href="{% url 'register' %}">Cadastra-se</a>
+</p>
+
+{% endblock %}

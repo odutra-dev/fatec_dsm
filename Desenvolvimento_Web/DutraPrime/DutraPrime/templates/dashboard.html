@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DutraPrime - Painel Administrativo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 font-sans leading-normal tracking-normal">
+
+    <nav class="bg-gray-800 p-4">
+        <div class="container mx-auto flex items-center justify-between">
+            <div class="flex items-center">
+                <img src="https://cdn-icons-png.flaticon.com/512/777/777242.png" alt="logo"
+                    class="w-12 h-12 rounded object-cover">
+                <span class="text-zinc-50 font-bold ml-5 text-3xl">Dutra Prime</span>
+            </div>
+            <div class="flex items-center">
+                <a href="#" class="text-white hover:text-gray-300 mr-4">Painel</a>
+                <a href="#" class="text-white hover:text-gray-300">Configurações</a>
+            </div>
+            <div class="flex items-center gap-2">
+                <img class="size-7" src="https://cdn.icon-icons.com/icons2/1141/PNG/512/1486395884-account_80606.png" alt="Usuario">
+                <span class="text-zinc-50">{{ nome_usuario }}</span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mx-auto my-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div class="bg-white rounded-lg shadow-md p-4">
+                <h2 class="text-lg font-semibold mb-2">Usuários</h2>
+                <p class="text-gray-600">Gerencie usuários do sistema.</p>
+            </div>
+            <div class="bg-white rounded-lg shadow-md p-4">
+                <h2 class="text-lg font-semibold mb-2">Filmes</h2>
+                <p class="text-gray-600">Gerencie filmes disponíveis.</p>
+            </div>
+            <div class="bg-white rounded-lg shadow-md p-4">
+                <h2 class="text-lg font-semibold mb-2">Relatórios</h2>
+                <p class="text-gray-600">Acompanhe relatórios de vendas.</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
