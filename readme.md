@@ -9,7 +9,7 @@ Pode ver todas as atividades passadas por elex nesse repositório.
 | Técnicas de Programação I  | [Atividades](Tecnicas_Programacao/1SEMESTRE/) |
 | Técnicas de Programação II | [Atividades](Tecnicas_Programacao/2SEMESTRE/) |
 | Dispositivos Móveis I      | [Atividades](Mobile/1SEMESTRE/)               |
-| Dispositivos Móveis II     | [Atividades](Mobile/2EMESTRE/)                |
+| Dispositivos Móveis II     | [Atividades](Mobile/2SEMESTRE/)               |
 | Desenvolvimento Web II     | [Atividades](Desenvolvimento_Web/2SEMESTRE/)  |
 | Desenvolvimento Web III    | [Atividades](Desenvolvimento_Web/3SEMESTRE/)  |
 
