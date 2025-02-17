@@ -25,3 +25,9 @@ replay_pid*
 
 # Config
 application.properties
+
+### NODE
+node_modules
+
+### ENV
+.env
