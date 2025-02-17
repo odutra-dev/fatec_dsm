@@ -1,6 +1,6 @@
-# Atividades de MOBILE Fatec
+# Atividades de WEB Fatec
 
-Esse repositório contém as atividades de MOBILE da disciplina Dispositivos Móveis da Fatec.
+Esse repositório contém as atividades de WEB da disciplina Desenvolmento WEB da Fatec.
 
 Pode ver todas as atividades passadas repositório.
 
