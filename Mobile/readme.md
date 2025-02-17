@@ -4,4 +4,4 @@ Esse repositório contém as atividades de MOBILE da disciplina Dispositivos M
 
 Pode ver todas as atividades passadas repositório.
 
-A [Fatec PG](https://fatecpg.edu.br/), oferece os cursos supiores tecnológicos.
+A [Fatec PG](https://fatecpg.cps.sp.gov.br/), oferece os cursos supiores tecnológicos.

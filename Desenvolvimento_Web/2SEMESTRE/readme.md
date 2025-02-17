@@ -4,4 +4,4 @@ Esse repositório contém as atividades de WWEB da disciplina Desenvolmento WE
 
 Pode ver todas as atividades passadas por ele nesse repositório.
 
-A [Fatec PG](https://fatecpg.edu.br/), oferece os cursos supiores tecnológicos.
+A [Fatec PG](https://fatecpg.cps.sp.gov.br/), oferece os cursos supiores tecnológicos.
