@@ -1,4 +1,4 @@
-# Atividades de MOBILE I Fatec
+# Atividades de WEB III Fatec
 
 Esse repositório contém as atividades de WWEB da disciplina Desenvolmento WEB III da Fatec. Onde o professora [Eulaliane Aparecida](https://github.com/DutraGames/fatec_dsm) ministra as atividades de MOBILE I.
 
