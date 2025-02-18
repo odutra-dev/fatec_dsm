@@ -12,3 +12,4 @@
 - [ ] Dispositivos Móveis II
 - [ ] Desenvolvimento Web II
 - [ ] Desenvolvimento Web III
+- [ ] Documentação do repositório
