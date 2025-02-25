@@ -12,7 +12,7 @@ export default function App() {
     >
       <Text>App aula 3</Text>
       <Comp01 />
-      <Comp02 />
+      <Comp02 title="Iniciar" />
       <StatusBar style="auto" />
     </ImageBackground>
   );
