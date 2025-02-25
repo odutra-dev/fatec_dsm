@@ -6,5 +6,10 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     padding: 20,
+    gap: 10,
+  },
+  img: {
+    width: 100,
+    height: 100,
   },
 });
