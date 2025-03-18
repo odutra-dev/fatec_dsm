@@ -6,22 +6,21 @@ const estilo = StyleSheet.create({
     paddingHorizontal: 14,
     gap: 12,
     width: 280,
-    height: 350,
-    paddingVertical: 12
+    height: 400,
+    paddingVertical: 12,
   },
   cor: {
     color: "gray",
     fontSize: 18,
-    
   },
   preco: {
     color: "Black",
     fontSize: 24,
   },
   imagem: {
-    width: '100%',
+    width: "100%",
     height: 250,
-    objectFit: 'fill'
-  }
+    objectFit: "fill",
+  },
 });
 export default estilo;
