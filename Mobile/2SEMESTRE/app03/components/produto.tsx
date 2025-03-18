@@ -18,7 +18,6 @@ export const Produto = ({ id, imagem, nome, preco }: DADOS) => {
       <Text numberOfLines={1} style={Estilo.preco}>
         R$ {preco}
       </Text>
-      <Button title="Comprar"/>
     </View>
   );
 };
