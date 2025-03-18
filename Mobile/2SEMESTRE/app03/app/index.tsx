@@ -1,8 +1,8 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, FlatList } from "react-native";
-import { Header } from "./components/header";
-import { Categoria } from "./components/categoria";
-import { Produto } from "./components/produto";
+import { StyleSheet, Text, View, FlatList, ScrollView } from "react-native";
+import { Header } from "../components/header";
+import { Categoria } from "../components/categoria";
+import { Produto } from "../components/produto";
 
 const dados = [
   {
@@ -37,7 +37,7 @@ const dados = [
 
 export default function App() {
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <StatusBar style="auto" />
       <Header />
 
@@ -55,7 +55,7 @@ export default function App() {
         renderItem={({ item }) => <Produto {...item} />}
         style={{ marginTop: 30 }}
       />
-    </View>
+    </ScrollView>
   );
 }
 
@@ -63,7 +63,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    marginTop: 30,
   },
   categorias: {
     gap: 8,
