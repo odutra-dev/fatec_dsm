@@ -6,7 +6,7 @@ const estilo = StyleSheet.create({
     paddingHorizontal: 14,
     gap: 12,
     width: 280,
-    height: 400,
+    minHeight: 300,
     paddingVertical: 12,
   },
   cor: {
