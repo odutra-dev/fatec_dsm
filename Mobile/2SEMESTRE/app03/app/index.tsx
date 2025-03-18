@@ -1,8 +1,16 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, FlatList, ScrollView } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  FlatList,
+  ScrollView,
+  TouchableOpacity,
+} from "react-native";
 import { Header } from "../components/header";
 import { Categoria } from "../components/categoria";
 import { Produto } from "../components/produto";
+import { Link } from "expo-router";
 
 const dados = [
   {
@@ -47,14 +55,28 @@ export default function App() {
         <Categoria text="Video Games" />
       </View>
 
-      <FlatList
-        showsVerticalScrollIndicator={false}
-        data={dados}
-        horizontal
-        keyExtractor={(item) => item.id.toString()}
-        renderItem={({ item }) => <Produto {...item} />}
-        style={{ marginTop: 30 }}
-      />
+      <ScrollView horizontal>
+        <TouchableOpacity>
+          <Link href="/Produto1">
+            <Produto {...dados[0]}></Produto>
+          </Link>
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <Link href="/Produto2">
+            <Produto {...dados[1]}></Produto>
+          </Link>
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <Link href="/Produto3">
+            <Produto {...dados[2]}></Produto>
+          </Link>
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <Link href="/Produto4">
+            <Produto {...dados[3]}></Produto>
+          </Link>
+        </TouchableOpacity>
+      </ScrollView>
     </ScrollView>
   );
 }
