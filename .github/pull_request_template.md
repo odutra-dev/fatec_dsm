@@ -12,4 +12,5 @@
 - [ ] Dispositivos Móveis II
 - [ ] Desenvolvimento Web II
 - [ ] Desenvolvimento Web III
+- [ ] Computação em Nuvem I
 - [ ] Documentação do repositório
