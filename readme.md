@@ -17,5 +17,6 @@ Você pode acessar todas as atividades disponibilizadas pelos professores neste 
 | Desenvolvimento Web II     | [Atividades](Desenvolvimento_Web/2SEMESTRE/)  |
 | Desenvolvimento Web III    | [Atividades](Desenvolvimento_Web/3SEMESTRE/)  |
 | Computação em Nuvem I      | [Atividades](Cloud/1SEMESTRE/)                |
+| Aprendizagem de Máquina    | [Atividades](Machine_Learning//1SEMESTRE/)    |
 
 Para mais informações, visite o site oficial da [Fatec Praia Grande](https://fatecpg.cps.sp.gov.br/), que oferece cursos superiores tecnológicos.
