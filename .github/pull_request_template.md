@@ -14,3 +14,4 @@
 - [ ] Desenvolvimento Web III
 - [ ] Computação em Nuvem I
 - [ ] Documentação do repositório
+- [ ] Aprendizado de Máquina
