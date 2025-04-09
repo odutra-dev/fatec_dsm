@@ -2,9 +2,15 @@
 
 # Atividades Fatec PG - DSM
 
-Este repositório contém as atividades das disciplinas `Técnicas de Programação 1/2`, `Dispositivos Móveis 1/2` e `Desenvolvimento Web 2/3` da Fatec Praia Grande. As aulas são ministradas pelos professores [Alessandro Lima](https://www.linkedin.com/search/results/all/?heroEntityKey=urn%3Ali%3Afsd_profile%3AACoAABY2Ps0BrRVOrSc4wbgwJfTStyHf-N4y9Wo&keywords=Alessandro%20Lima&origin=ENTITY_SEARCH_HOME_HISTORY&sid=3.) e [Eulaliane Aparecida](https://github.com/Dutragames).
+Este repositório contém as atividades das disciplinas da Fatec Praia Grande. As aulas são ministradas pelos seguintes professores:
 
-Você pode acessar todas as atividades disponibilizadas pelos professores neste repositório.
+- [Alessandro Lima](https://www.linkedin.com/search/results/all/?heroEntityKey=urn%3Ali%3Afsd_profile%3AACoAABY2Ps0BrRVOrSc4wbgwJfTStyHf-N4y9Wo&keywords=Alessandro%20Lima&origin=ENTITY_SEARCH_HOME_HISTORY&sid=3.)
+- [Anderson Bozzo](https://www.linkedin.com/in/anderson-valentino-bozzo-86450726/)
+- [Vagner dos Santos](https://www.linkedin.com/in/vagner-dos-santos/)
+- [Eulaliane Aparecida](https://github.com/Dutragames)
+- [Jonatas](https://github.com/Dutragames)
+
+> Você pode acessar todas as atividades disponibilizadas pelos professores neste repositório.
 
 ## Disciplinas e Atividades
 
@@ -18,5 +24,6 @@ Você pode acessar todas as atividades disponibilizadas pelos professores neste 
 | Desenvolvimento Web III    | [Atividades](Desenvolvimento_Web/3SEMESTRE/)  |
 | Computação em Nuvem I      | [Atividades](Cloud/1SEMESTRE/)                |
 | Aprendizagem de Máquina    | [Atividades](Machine_Learning//1SEMESTRE/)    |
+| Entrega Continua           | [Atividades](DevOps/)                         |
 
 Para mais informações, visite o site oficial da [Fatec Praia Grande](https://fatecpg.cps.sp.gov.br/), que oferece cursos superiores tecnológicos.
