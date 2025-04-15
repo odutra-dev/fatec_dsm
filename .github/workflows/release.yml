@@ -24,6 +24,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git checkout -b release-branch
+          git push --set-upstream origin release-branch
 
       - name: Semantic Release
         uses: cycjimmy/semantic-release-action@v4
