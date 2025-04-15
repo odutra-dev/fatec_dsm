@@ -6,6 +6,8 @@
 
 ## De qual Disciplina é a Atividade
 
+<!--
+- [ ] Documentação do repositório e processos de CI/CD
 - [ ] Técnicas de Programação I
 - [ ] Técnicas de Programação II
 - [ ] Dispositivos Móveis I
@@ -13,6 +15,6 @@
 - [ ] Desenvolvimento Web II
 - [ ] Desenvolvimento Web III
 - [ ] Computação em Nuvem I
-- [ ] Documentação do repositório
 - [ ] Aprendizado de Máquina
 - [ ] Entrega Contínua
+-->

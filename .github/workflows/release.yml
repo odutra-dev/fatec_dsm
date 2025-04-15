@@ -1,0 +1,60 @@
+name: Release
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run semantic-release in dry-run to generate release info
+        run: npx semantic-release --dry-run
+        env:
+          GITHUB_TOKEN: ${{ secrets.SEMATIC }}
+
+      - name: Create release branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout -b release-branch
+
+      - name: Run semantic-release to apply changes
+        run: npx semantic-release
+        env:
+          GITHUB_TOKEN: ${{ secrets.SEMATIC }}
+
+      - name: Commit release changes
+        run: |
+          git add .
+          git commit -m "chore(release): apply release changes"
+          git push origin release-branch
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.SEMATIC }}
+          commit-message: "chore(release): apply release changes"
+          title: "chore(release): release PR"
+          body: "This PR contains the automated release changes."
+          base: main
+          branch: release-branch
