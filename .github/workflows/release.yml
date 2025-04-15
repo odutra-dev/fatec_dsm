@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - release-branch
+      - main
 
 permissions:
   contents: write
@@ -23,8 +23,11 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+          git fetch origin
+          git checkout main
+          git pull origin main
           git checkout -b release-branch
-          git push --set-upstream origin release-branch
+          git push --set-upstream origin release-branch --force
 
       - name: Semantic Release
         uses: cycjimmy/semantic-release-action@v4
@@ -43,6 +46,5 @@ jobs:
           commit-message: "chore(release): apply release changes"
           title: "chore(release): release PR"
           body: "This PR contains the automated release changes."
-          base: main
           branch: release-branch
           delete-branch: true
