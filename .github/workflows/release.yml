@@ -40,10 +40,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.SEMATIC }}
 
-      - name: Verificar alterações
-        run: |
-          git diff origin/main...release-branch
-
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v7
         with:
