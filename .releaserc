@@ -1,6 +1,5 @@
 {
   "branches": [
-    "main",
     "release-branch"
   ],
   "ci": false,
