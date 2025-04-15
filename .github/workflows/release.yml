@@ -39,9 +39,9 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v7
         with:
-          token: ${{ secrets.SEMATIC }}
           commit-message: "chore(release): apply release changes"
           title: "chore(release): release PR"
           body: "This PR contains the automated release changes."
           base: main
           branch: release-branch
+          delete-branch: true
