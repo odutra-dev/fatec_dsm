@@ -1,7 +1,6 @@
 {
   "branches": [
-    "main",
-    "release-branch"
+    "development"
   ],
   "ci": false,
   "plugins": [

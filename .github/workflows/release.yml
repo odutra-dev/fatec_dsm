@@ -46,6 +46,6 @@ jobs:
           commit-message: "chore(release): apply release changes"
           title: "chore(release): release PR"
           body: "This PR contains the automated release changes."
-          base: main
+          base: development
           branch: release-branch
           delete-branch: true
