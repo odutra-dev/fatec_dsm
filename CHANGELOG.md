@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.1](https://github.com/DutraGames/fatec_dsm/compare/v1.0.0...v1.0.1) (2025-04-17)
+
+### Bug Fixes
+
+* :bug: Git actions ([6ea6619](https://github.com/DutraGames/fatec_dsm/commit/6ea6619992c8dbbc7b454bd2c37e93042378ade8))
+* :bug: Git actions ([57dc2d1](https://github.com/DutraGames/fatec_dsm/commit/57dc2d154631ec1bfc058d92963f26008301cd64))
+* :bug: Git actions ([b2f6fe2](https://github.com/DutraGames/fatec_dsm/commit/b2f6fe2896073ca1efd747a0ea0e181653223aba))
+* :bug: Git actions ([f2c0ad4](https://github.com/DutraGames/fatec_dsm/commit/f2c0ad4004a77899fa80c520d245fce7aabb3a98))
+* :bug: Git actions ([e70eb69](https://github.com/DutraGames/fatec_dsm/commit/e70eb69cfc85c82855d59798a19a537851323489))
+
 ## 1.0.0 (2025-04-15)
 
 ### Features
