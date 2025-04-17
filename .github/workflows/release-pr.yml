@@ -43,6 +43,11 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.SEMATIC }}
 
+      - name: Create Tag in release-branch
+        run: |
+          git tag -a v$(date +%Y.%m.%d.%H.%M.%S) -m "Release tag"
+          git push origin --tags
+
       - name: Check for changes
         id: git-check
         run: |
