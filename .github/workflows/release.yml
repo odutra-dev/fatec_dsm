@@ -19,10 +19,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Create release branch
+      - name: Setup Git
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Create release branch
+        run: |
           git fetch origin
           git checkout main
           git pull origin main
@@ -40,7 +43,14 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.SEMATIC }}
 
+      - name: Check if there are changes
+        id: git-check
+        run: |
+          git fetch origin main
+          git diff --quiet origin/main || echo "changed=true" >> $GITHUB_OUTPUT
+
       - name: Create Pull Request
+        if: steps.git-check.outputs.changed == 'true'
         uses: peter-evans/create-pull-request@v7
         with:
           commit-message: "chore(release): apply release changes"
