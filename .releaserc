@@ -1,6 +1,6 @@
 {
   "branches": [
-    "development"
+    "main"
   ],
   "ci": false,
   "plugins": [
