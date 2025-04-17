@@ -1,4 +1,4 @@
-name: Release
+name: Release PR
 
 on:
   workflow_dispatch:
@@ -12,7 +12,7 @@ permissions:
 
 jobs:
   release:
-    name: Release
+    name: Prepare Release PR
     runs-on: ubuntu-latest
 
     steps:
@@ -32,7 +32,7 @@ jobs:
           git checkout -b release-branch
           git push --set-upstream origin release-branch --force
 
-      - name: Semantic Release
+      - name: Semantic Release (prepare only)
         uses: cycjimmy/semantic-release-action@v4
         with:
           semantic_version: 24.2.3
@@ -43,7 +43,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.SEMATIC }}
 
-      - name: Check if there are changes
+      - name: Check for changes
         id: git-check
         run: |
           git fetch origin main
