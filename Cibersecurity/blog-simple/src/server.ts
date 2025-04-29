@@ -5,9 +5,12 @@ import { fastifySwaggerUi } from "@fastify/swagger-ui";
 import {
   validatorCompiler,
   serializerCompiler,
+  type ZodTypeProvider,
+  jsonSchemaTransform,
 } from "fastify-type-provider-zod";
+import { userRoute } from "./routes/user";
 
-const app = fastify();
+const app = fastify().withTypeProvider<ZodTypeProvider>();
 
 app.setValidatorCompiler(validatorCompiler);
 app.setSerializerCompiler(serializerCompiler);
@@ -21,7 +24,10 @@ app.register(fastifySwagger, {
       version: "1.0.0",
     },
   },
+  transform: jsonSchemaTransform,
 });
+
+app.register(userRoute);
 
 app.register(fastifySwaggerUi, { routePrefix: "/docs" });
 
