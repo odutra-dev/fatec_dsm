@@ -25,5 +25,6 @@ Este repositório contém as atividades das disciplinas da Fatec Praia Grande. A
 | Computação em Nuvem I      | [Atividades](Cloud/1SEMESTRE/)                |
 | Aprendizagem de Máquina    | [Atividades](Machine_Learning//1SEMESTRE/)    |
 | Entrega Continua           | [Atividades](DevOps/)                         |
+| Cibersegurança             | [Atividades](Cibersecurity/)                  |
 
 Para mais informações, visite o site oficial da [Fatec Praia Grande](https://fatecpg.cps.sp.gov.br/), que oferece cursos superiores tecnológicos.
