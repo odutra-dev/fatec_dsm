@@ -11,6 +11,7 @@ import {
 import { userRoute } from "./routes/user.route";
 import { fastifyJwt } from "@fastify/jwt";
 import { postRoute } from "./routes/post.routes";
+import { fastifyHelmet } from "@fastify/helmet";
 
 const app = fastify().withTypeProvider<ZodTypeProvider>();
 
@@ -35,6 +36,8 @@ app.register(postRoute);
 app.register(fastifyJwt, {
   secret: process.env.JWT_SECRET as string,
 });
+
+app.register(fastifyHelmet);
 
 app.register(fastifySwaggerUi, { routePrefix: "/docs" });
 
