@@ -6,6 +6,7 @@ export const postSchema = z.object({
   content: z.string().nullable(),
   authorId: z.number(),
   createdAt: z.date(),
+  updatedAt: z.date(),
 });
 
 export const postCreateSchema = z.object({

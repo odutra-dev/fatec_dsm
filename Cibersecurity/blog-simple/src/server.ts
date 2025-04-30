@@ -21,10 +21,20 @@ app.setSerializerCompiler(serializerCompiler);
 app.register(fastifyCors, { origin: "*" });
 
 app.register(fastifySwagger, {
+  mode: "dynamic", // ou 'static' se preferir
   openapi: {
     info: {
-      title: "Api de um Blog",
+      title: "API de um Blog",
       version: "1.0.0",
+    },
+    components: {
+      securitySchemes: {
+        bearerAuth: {
+          type: "http",
+          scheme: "bearer",
+          bearerFormat: "JWT",
+        },
+      },
     },
   },
   transform: jsonSchemaTransform,

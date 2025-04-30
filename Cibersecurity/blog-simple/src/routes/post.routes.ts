@@ -33,6 +33,11 @@ export const postRoute = async (app: FastifyTypedInstance) => {
         description: "Create a new post",
         tags: ["Post"],
         body: postCreateSchema.omit({ authorId: true }),
+        headers: z.object({
+          authorization: z.string().regex(/^Bearer\s.+$/, {
+            message: "Authorization header must start with 'Bearer '",
+          }),
+        }),
       },
     },
     async (request, reply) => {
