@@ -9,6 +9,7 @@ import {
   jsonSchemaTransform,
 } from "fastify-type-provider-zod";
 import { userRoute } from "./routes/user.route";
+import { fastifyJwt } from "@fastify/jwt";
 
 const app = fastify().withTypeProvider<ZodTypeProvider>();
 
@@ -28,6 +29,10 @@ app.register(fastifySwagger, {
 });
 
 app.register(userRoute);
+
+app.register(fastifyJwt, {
+  secret: process.env.JWT_SECRET as string,
+});
 
 app.register(fastifySwaggerUi, { routePrefix: "/docs" });
 
