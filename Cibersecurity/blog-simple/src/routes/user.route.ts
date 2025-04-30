@@ -1,4 +1,4 @@
-import { userCreateSchema } from "../schemas/user.schema";
+import { userCreateSchema, userLoginSchema } from "../schemas/user.schema";
 import { FastifyTypedInstance } from "../types/FastifyTipeInstance";
 import { UserUsecase } from "../usecase/user.usecase";
 import { hashPassword } from "../util/hash";
@@ -9,7 +9,7 @@ export const userRoute = (app: FastifyTypedInstance) => {
     "/register",
     {
       schema: {
-        description: "Cria um novo usuário",
+        description: "Create a new user",
         tags: ["User"],
         body: userCreateSchema,
       },
@@ -29,6 +29,31 @@ export const userRoute = (app: FastifyTypedInstance) => {
         password: hashedPassword,
       });
       return reply.code(201).send(user);
+    }
+  );
+
+  app.post(
+    "/login",
+    {
+      schema: {
+        description: "Login a user",
+        tags: ["User"],
+        body: userLoginSchema,
+      },
+    },
+    async (request, reply) => {
+      const { email, password } = request.body;
+
+      const user = await userUseCase.login({ email, password });
+
+      const token = app.jwt.sign({
+        id: user.id,
+        email: user.email,
+      });
+
+      return reply.code(200).send({
+        token,
+      });
     }
   );
 };
