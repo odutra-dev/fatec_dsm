@@ -60,4 +60,20 @@ export const postRoute = async (app: FastifyTypedInstance) => {
       return reply.code(200).send(posts);
     }
   );
+
+  app.get(
+    "/post/:id",
+    {
+      schema: {
+        description: "Get a post by id",
+        tags: ["Post"],
+        params: z.object({ id: z.string() }),
+      },
+    },
+    async (request, reply) => {
+      const { id } = request.params;
+      const post = await postUseCase.getById(Number(id));
+      return reply.code(200).send(post);
+    }
+  );
 };

@@ -16,4 +16,9 @@ export class PostUsecase {
     const posts = await this.postRepository.getAll();
     return posts;
   }
+
+  async getById(id: number): Promise<PostType> {
+    const post = await this.postRepository.getById(id);
+    return post;
+  }
 }

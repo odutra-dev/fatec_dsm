@@ -18,4 +18,13 @@ export class PostRepository {
     const posts = await prisma.post.findMany();
     return posts;
   }
+
+  async getById(id: number): Promise<PostType> {
+    const post = await prisma.post.findUnique({
+      where: {
+        id,
+      },
+    });
+    return post;
+  }
 }
