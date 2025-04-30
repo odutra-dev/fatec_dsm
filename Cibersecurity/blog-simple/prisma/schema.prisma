@@ -17,9 +17,11 @@ model User {
 }
 
 model Post {
-  id       Int     @id @default(autoincrement())
-  title    String
-  content  String?
-  author   User    @relation(fields: [authorId], references: [id])
-  authorId Int
+  id        Int      @id @default(autoincrement())
+  title     String
+  content   String?
+  author    User     @relation(fields: [authorId], references: [id])
+  authorId  Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
