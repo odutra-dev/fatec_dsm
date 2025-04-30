@@ -17,6 +17,10 @@ export const userRoute = (app: FastifyTypedInstance) => {
     async (request, reply) => {
       const { email, name, password } = request.body;
 
+      if (await userUseCase.emailExists(email)) {
+        return reply.code(409).send({ message: "Email already exists" });
+      }
+
       const hashedPassword = await hashPassword(password);
 
       const user = await userUseCase.register({

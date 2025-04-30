@@ -7,8 +7,14 @@ export class UserUsecase {
   constructor() {
     this.userRepository = new UserRepository();
   }
+
   async register({ email, name, password }: UserCreate) {
     const user = await this.userRepository.register({ email, name, password });
+    return user;
+  }
+
+  async emailExists(email: string) {
+    const user = await this.userRepository.emailExists(email);
     return user;
   }
 }
