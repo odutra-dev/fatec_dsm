@@ -1,6 +1,13 @@
+import { z } from "zod";
 import { postCreateSchema, postSchema } from "../schemas/post.schema";
 import { FastifyTypedInstance } from "../types/FastifyTipeInstance";
 import { PostUsecase } from "../usecase/post.usecase";
+
+const schema = z.object({
+  id: z.number(),
+});
+
+type UserToken = z.infer<typeof schema>;
 
 export const postRoute = async (app: FastifyTypedInstance) => {
   const postUseCase = new PostUsecase();
@@ -30,10 +37,11 @@ export const postRoute = async (app: FastifyTypedInstance) => {
     },
     async (request, reply) => {
       const { title, content } = request.body;
+      const user = request.user as UserToken;
       const post = await postUseCase.create({
         title,
         content,
-        authorId: request.user.id,
+        authorId: user.id,
       });
       return reply.code(201).send(post);
     }
