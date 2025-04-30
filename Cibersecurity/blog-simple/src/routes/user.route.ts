@@ -3,7 +3,7 @@ import { FastifyTypedInstance } from "../types/FastifyTipeInstance";
 import { UserUsecase } from "../usecase/user.usecase";
 import { hashPassword } from "../util/hash";
 
-export const userRoute = (app: FastifyTypedInstance) => {
+export const userRoute = async (app: FastifyTypedInstance) => {
   const userUseCase = new UserUsecase();
   app.post(
     "/register",

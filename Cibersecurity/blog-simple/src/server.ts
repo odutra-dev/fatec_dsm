@@ -10,6 +10,7 @@ import {
 } from "fastify-type-provider-zod";
 import { userRoute } from "./routes/user.route";
 import { fastifyJwt } from "@fastify/jwt";
+import { postRoute } from "./routes/post.routes";
 
 const app = fastify().withTypeProvider<ZodTypeProvider>();
 
@@ -29,6 +30,7 @@ app.register(fastifySwagger, {
 });
 
 app.register(userRoute);
+app.register(postRoute);
 
 app.register(fastifyJwt, {
   secret: process.env.JWT_SECRET as string,
