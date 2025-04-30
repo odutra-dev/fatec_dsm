@@ -17,4 +17,5 @@
 - [ ] Computação em Nuvem I
 - [ ] Aprendizado de Máquina
 - [ ] Entrega Contínua
+- [ ] Cibersegurança
 -->
