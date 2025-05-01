@@ -35,7 +35,7 @@ const dados = [
   },
   {
     id: 4,
-    nome: "Triangulo Equilatero",
+    nome: "Triangulo",
     imagem:
       "https://uploads-cdn.omnicalculator.com/images//geometry/perimeter/triangle1-r2.svg?width=425&enlarge=0&format=webp",
   },
