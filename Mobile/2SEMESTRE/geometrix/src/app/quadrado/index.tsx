@@ -12,7 +12,7 @@ import { Colors } from "@/theme/colors";
 import { Field } from "@/components/field";
 const ButtonAnimated = Animated.createAnimatedComponent(TouchableOpacity);
 
-export default function Geometric() {
+export default function Quadrado() {
   const { isDark, toggleTheme } = useTheme();
 
   const [value, setValue] = useState();
