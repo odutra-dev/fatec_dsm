@@ -97,6 +97,7 @@ export default function Geometric() {
       </Animated.Text>
 
       <Animated.FlatList
+        style={[{ marginTop: 16 }]}
         data={dados}
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => (
