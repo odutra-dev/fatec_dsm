@@ -93,7 +93,7 @@ export default function Triangulo() {
   });
 
   return (
-    <Animated.View style={[viewAnimatedStyle]}>
+    <Animated.ScrollView style={[viewAnimatedStyle]}>
       <Animated.Text style={[textPrimaryAnimatedStyle]}>
         Retangulo
       </Animated.Text>
@@ -129,6 +129,31 @@ export default function Triangulo() {
         {" "}
         Área: {area}
       </Animated.Text>
-    </Animated.View>
+      <Animated.Image
+        source={{
+          uri: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGcAAAANCAYAAAC0LnDFAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAABGJhU0UAAAAMyZLetQAAAWJJREFUeNpjYECA/0j4AxAvB2I3huEJ/g9lB7MAsSUQ7wViv9HIGZwOFgbiM8MwkP8PtQjHZjgTEH+jsj2gnHgSiH8B8S0gth6gyNED4oNQdzwH4qIBjBxrqFt+APFDII4lxvAAIN6EwyGEMC6wFIi1oOxEIL4yQJFzFIh9oAlQEsqPHAC3GADxa2hYg9yiBg0jvIa7QQNOiYa5lQmacgcicgTRxCyhqZfeblkDxHnEGA5rqYHqmQ4gFh1k9QYlOZbaRTi13PIJiPkGSyDVQuuaPyR6gh4Ngl+DyC10b17OBOJQIOagkr3UDBA2IH46AG55Te2cQy74RGV7qRk54UA8dwDcMpvYOofW4AYQJ0PZ0kDcDG3GSg9A5IBaoTpQvh7UbSoDEDlK0OZzELTek8aWSOgROaBAOAct20F9HXMgbgTil3TuvH6CNuPvQus+kJtsB7AzbQAND5BbLgzTUZnhBQBsVI4r/0witAAAARV0RVh0TWF0aE1MADxtYXRoIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8xOTk4L01hdGgvTWF0aE1MIj48bWkgbWF0aHZhcmlhbnQ9Im5vcm1hbCI+UDwvbWk+PG1vPj08L21vPjxtaSBtYXRodmFyaWFudD0ibm9ybWFsIj5hPC9taT48bW8+JiN4QTA7PC9tbz48bW8+KzwvbW8+PG1vPiYjeEEwOzwvbW8+PG1pIG1hdGh2YXJpYW50PSJub3JtYWwiPmI8L21pPjxtbz4mI3hBMDs8L21vPjxtbz4rPC9tbz48bW8+JiN4QTA7PC9tbz48bWkgbWF0aHZhcmlhbnQ9Im5vcm1hbCI+YzwvbWk+PC9tYXRoPuo0pEkAAAAASUVORK5CYII=",
+        }}
+        style={{
+          width: 100,
+          height: 100,
+          alignSelf: "center",
+          resizeMode: "contain",
+          marginVertical: 12,
+        }}
+      ></Animated.Image>
+
+      <Animated.Image
+        source={{
+          uri: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEUAAAAjCAYAAADCIMduAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAABGJhU0UAAAAXQ/cXWQAAAZtJREFUeNpjYBgc4P8QNXs0UEYDZZAEih4QHwTiX0D8HIiLqBwoXkB8HIh/QO2RHQqBchSIfYCYCYglofxIKpmdDMTbgFgDKpYIDZhBHyiCaGKWVHI4yOylaGJM0BQ55MoUkMO/UclsjqFY1uBy4C8amj0kA4UNiJ+OBgoqCAfiuSM9UDYBsQ6UD6qebwCxCpF6/9MjUCrpHCifoNXkXSD+A8TngNiWhACleaAYQDVoMIwCOFgMzctzR4MCAmSheRkErg2FpjA9QA8QZ0HZILqLyPyMDw9pwAMt6NigfBYgvg8VH7EAVOPUoomB+OU0rIYHG0YBLNBUgt4pA/FvQfshIy77ZBDwWPJIzDpXgFgJh5w8VH5EAdCI1BoCapZD1Y0YABrIMSWgxhiID4+2WAY3sIam7k/QMZcLQBw90gMFlLojkdpQWgzUG9MdVgBUIVwaDQZM8GM0CFCBJTQLjQIoAI3Wn4QWwKMA2hXZAMRuo0EBAUrQAFEZDQoIAA2XzgZirtGggABxIF4F7d2PAijYwjA6sI4BaDp+AwAIOZ+sAFiY2gAAAPR0RVh0TWF0aE1MADxtYXRoIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8xOTk4L01hdGgvTWF0aE1MIj48bWkgbWF0aHZhcmlhbnQ9Im5vcm1hbCI+QTwvbWk+PG1vPj08L21vPjxtZnJhYz48bXJvdz48bWkgbWF0aHZhcmlhbnQ9Im5vcm1hbCI+YjwvbWk+PG1vPiYjeEEwOzwvbW8+PG1vPi48L21vPjxtbz4mI3hBMDs8L21vPjxtaSBtYXRodmFyaWFudD0ibm9ybWFsIj5oPC9taT48L21yb3c+PG1uPjI8L21uPjwvbWZyYWM+PC9tYXRoPqaEUNUAAAAASUVORK5CYII=",
+        }}
+        style={{
+          width: 50,
+          height: 50,
+          alignSelf: "center",
+          resizeMode: "contain",
+          marginVertical: 12,
+        }}
+      ></Animated.Image>
+    </Animated.ScrollView>
   );
 }

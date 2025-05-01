@@ -122,6 +122,30 @@ export default function Quadrado() {
         {" "}
         Área: {area}
       </Animated.Text>
+      <Animated.Image
+        source={{
+          uri: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC0AAAANCAYAAAA9tuesAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAABGJhU0UAAAAMyZLetQAAAKZJREFUeNpjYECA/0j4AxAvB2I3BtoCH6h92MB/YgxAVsQCxJZAvBeI/WjkYB4gvkZNR8OAMBCfoZGjZwJxMi0czQTE32jgYGtoLDLQwtEBQLwJh1pCGBdgA+JLQCxPC0eDMuEVIFaicih3AHEOEY4j2tGwkuMM1HBRKjtYD4iPEuk4spMHIQ+SmjxOArHKQDmaXECKRweNo0mxd9TR9HQ0qcXp4AUANONWO7jv+psAAACRdEVYdE1hdGhNTAA8bWF0aCB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMTk5OC9NYXRoL01hdGhNTCI+PG1pIG1hdGh2YXJpYW50PSJub3JtYWwiPlA8L21pPjxtbz49PC9tbz48bW4+NDwvbW4+PG1pIG1hdGh2YXJpYW50PSJub3JtYWwiPkw8L21pPjwvbWF0aD4V3cF0AAAAAElFTkSuQmCC",
+        }}
+        style={{
+          width: 50,
+          height: 50,
+          alignSelf: "center",
+          resizeMode: "contain",
+          marginVertical: 12,
+        }}
+      ></Animated.Image>
+      <Animated.Image
+        source={{
+          uri: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC0AAAARCAYAAABJoiVMAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAABGJhU0UAAAAQ3ZOC+gAAANNJREFUeNpjYBi84D8U/wLio0CswjCEABMQZwHxOYYhCH4MNQfbA/FBQooq6ZRmiQGS0DSthE+RAdRAjUHgaDUg3gJ1OF6wGIjnQvFAOhrk0G1AzEfIIFkgvgFlX4PyB8rR24iN7R5o8cIApbuILEvxYXIdTZRZPEB8F4jZoHwWIL4PFR/IjEiwxKhFEwPxywero1mgoSyIJg7i34LWSvROHgRBBgGLkwdjSF/BU3jLQ+UHlaO9gHgNATXLoeoGjaNBdbopATXGQHyYRk1PUvLB0AUAuNlOP0Qk3DEAAACedEVYdE1hdGhNTAA8bWF0aCB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMTk5OC9NYXRoL01hdGhNTCI+PG1pIG1hdGh2YXJpYW50PSJub3JtYWwiPkE8L21pPjxtbz49PC9tbz48bXN1cD48bWkgbWF0aHZhcmlhbnQ9Im5vcm1hbCI+TDwvbWk+PG1uPjI8L21uPjwvbXN1cD48L21hdGg+/hz4dAAAAABJRU5ErkJggg==",
+        }}
+        style={{
+          width: 50,
+          height: 50,
+          alignSelf: "center",
+          resizeMode: "contain",
+          marginVertical: 12,
+        }}
+      ></Animated.Image>
     </Animated.View>
   );
 }
