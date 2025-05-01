@@ -1,6 +1,6 @@
 import { useTheme } from "@/context/theme";
 import { useEffect } from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { TouchableOpacity } from "react-native";
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
@@ -8,11 +8,13 @@ import Animated, {
   withTiming,
 } from "react-native-reanimated";
 
-import { Colors } from "../theme/colors";
+import { router } from "expo-router";
+
+import { Colors } from "@/theme/colors";
 
 const ButtonAnimated = Animated.createAnimatedComponent(TouchableOpacity);
 
-export default function MyComponent() {
+export default function Home() {
   const { isDark, toggleTheme } = useTheme();
 
   const themeAnimated = useSharedValue(isDark ? 1 : 0);
@@ -31,9 +33,39 @@ export default function MyComponent() {
     };
   });
 
-  const textAnimatedStyle = useAnimatedStyle(() => {
+  const textPrimaryAnimatedStyle = useAnimatedStyle(() => {
     return {
       color: interpolateColor(
+        themeAnimated.value,
+        [0, 1],
+        [Colors.light.primary, Colors.dark.primary]
+      ),
+    };
+  });
+
+  const textSecondaryAnimatedStyle = useAnimatedStyle(() => {
+    return {
+      color: interpolateColor(
+        themeAnimated.value,
+        [0, 1],
+        [Colors.light.secundary, Colors.dark.secudary]
+      ),
+    };
+  });
+
+  const textTextAnimatedStyle = useAnimatedStyle(() => {
+    return {
+      color: interpolateColor(
+        themeAnimated.value,
+        [0, 1],
+        [Colors.light.text, Colors.dark.text]
+      ),
+    };
+  });
+
+  const buttonAnimatedStyle = useAnimatedStyle(() => {
+    return {
+      backgroundColor: interpolateColor(
         themeAnimated.value,
         [0, 1],
         [Colors.light.primary, Colors.dark.primary]
@@ -48,19 +80,37 @@ export default function MyComponent() {
           flex: 1,
           justifyContent: "center",
           alignItems: "center",
+          padding: 24,
+          gap: 8,
         },
         viewAnimatedStyle,
       ]}
     >
-      <Animated.Text style={[{ fontSize: 24 }, textAnimatedStyle]}>
-        O tema atual é {isDark ? "escuro" : "claro"}
+      <Animated.Text style={[{ fontSize: 24 }, textPrimaryAnimatedStyle]}>
+        Seja bem vindo ao Geometrix
+      </Animated.Text>
+      <Animated.Text
+        style={[
+          textTextAnimatedStyle,
+          { fontSize: 14, color: Colors.light.text },
+        ]}
+      >
+        Uma calculadora para calcular area e perimetro de formas geometricas
       </Animated.Text>
       <ButtonAnimated
-        onPress={toggleTheme}
-        style={{ marginTop: 12, backgroundColor: "#000", padding: 12 }}
+        onPress={() => router.push("/geometric")}
+        style={[
+          {
+            padding: 8,
+            borderRadius: 8,
+          },
+          buttonAnimatedStyle,
+        ]}
       >
-        <Animated.Text style={{ color: "#fff" }}>
-          Trocar tema para {isDark ? "claro" : "escuro"}
+        <Animated.Text
+          style={[textSecondaryAnimatedStyle, { fontWeight: "bold" }]}
+        >
+          Escolher forma
         </Animated.Text>
       </ButtonAnimated>
     </Animated.View>
