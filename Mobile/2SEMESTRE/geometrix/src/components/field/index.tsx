@@ -36,7 +36,7 @@ export function Field({
         [0, 1],
         [Colors.light.background, Colors.dark.background]
       ),
-      paddingHorizontal: 24,
+
       gap: 8,
     };
   });
