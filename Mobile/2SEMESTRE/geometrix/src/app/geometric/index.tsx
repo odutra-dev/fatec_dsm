@@ -39,6 +39,12 @@ const dados = [
     imagem:
       "https://uploads-cdn.omnicalculator.com/images//geometry/perimeter/triangle1-r2.svg?width=425&enlarge=0&format=webp",
   },
+  {
+    id: 5,
+    nome: "Losango",
+    imagem:
+      "https://uploads-cdn.omnicalculator.com/images//geometry/perimeter/rhombus1-r2.svg?width=425&enlarge=0&format=webp",
+  },
 ];
 
 export default function Geometric() {
