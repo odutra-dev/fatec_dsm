@@ -104,7 +104,7 @@ export default function Circulo() {
           uri: "https://uploads-cdn.omnicalculator.com/images//geometry/perimeter/circle-r2.svg?width=425&enlarge=0&format=webp",
         }}
       ></Animated.Image>
-      <Field nome="Comprimento" value={raio} setValue={setRaio} />
+      <Field nome="Raio" value={raio} setValue={setRaio} />
       <ButtonAnimated
         style={[buttonAnimatedStyle]}
         onPress={() => {
