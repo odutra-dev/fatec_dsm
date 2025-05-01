@@ -8,6 +8,8 @@ import Animated, {
   withTiming,
 } from "react-native-reanimated";
 
+import { router } from "expo-router";
+
 import { Colors } from "@/theme/colors";
 
 const ButtonAnimated = Animated.createAnimatedComponent(TouchableOpacity);
@@ -26,33 +28,21 @@ export function Forms({ nome, imagem }: { nome: string; imagem: string }) {
       backgroundColor: interpolateColor(
         themeAnimated.value,
         [0, 1],
-        [Colors.light.background, Colors.dark.background]
-      ),
-    };
-  });
-
-  const view2AnimatedStyle = useAnimatedStyle(() => {
-    return {
-      backgroundColor: interpolateColor(
-        themeAnimated.value,
-        [0, 1],
         [Colors.light.secundary, Colors.dark.secudary]
       ),
+      borderRadius: 8,
+      padding: 8,
+      marginTop: 8,
+      alignItems: "center",
+      gap: 8,
     };
   });
 
   return (
     <ButtonAnimated
-      style={[
-        view2AnimatedStyle,
-        {
-          borderRadius: 8,
-          padding: 8,
-          marginTop: 8,
-          alignItems: "center",
-          gap: 8,
-        },
-      ]}
+      style={[viewAnimatedStyle]}
+      activeOpacity={0.7}
+      onPress={() => router.push("/" + nome.toLowerCase())}
     >
       <Animated.Image
         source={{ uri: imagem }}
