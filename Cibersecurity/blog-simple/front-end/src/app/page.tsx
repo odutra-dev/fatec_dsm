@@ -2,6 +2,7 @@
 import Link from "next/link";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import Header from "@/components/Header";
 
 type Post = {
   id: number;
@@ -21,9 +22,7 @@ export default function Home() {
 
   return (
     <>
-      <header className="flex items-center justify-between border-b border-zinc-800 p-4">
-        <h1 className="text-3xl font-bold">Dev.go</h1>
-      </header>
+      <Header />
 
       <main className="flex flex-col items-center p-4">
         <h2 className="text-2xl font-bold">Posts Recentes</h2>
@@ -35,7 +34,9 @@ export default function Home() {
             className="cursor-pointer hover:bg-zinc-800 w-full max-w-3xl border border-zinc-800 p-4 rounded-2xl mt-4 min-h-28"
           >
             <h3 className="text-lg font-bold line-clamp-1">{post.title}</h3>
-            <p className="text-zinc-500 line-clamp-3 ">{post.content}</p>
+            <p className="text-zinc-500 line-clamp-3 break-words">
+              {post.content}
+            </p>
           </Link>
         ))}
       </main>
