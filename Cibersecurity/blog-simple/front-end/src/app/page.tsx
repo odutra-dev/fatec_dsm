@@ -3,6 +3,7 @@ import Link from "next/link";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Header from "@/components/Header";
+import { api } from "@/utils/api";
 
 type Post = {
   id: number;
@@ -14,7 +15,7 @@ export default function Home() {
   const [posts, setPosts] = useState<Post[]>([]);
 
   useEffect(() => {
-    axios.get(process.env.NEXT_PUBLIC_API + "/post").then((response) => {
+    api.get("/post").then((response) => {
       setPosts(response.data);
       console.log(response.data);
     });

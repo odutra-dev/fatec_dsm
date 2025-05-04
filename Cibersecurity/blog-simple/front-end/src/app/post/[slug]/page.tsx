@@ -1,4 +1,5 @@
 import Header from "@/components/Header";
+import { api } from "@/utils/api";
 import axios from "axios";
 
 type Post = {
@@ -14,9 +15,7 @@ export default async function Page({
 }) {
   const { slug } = await params;
 
-  const { data }: { data: Post } = await axios.get(
-    process.env.NEXT_PUBLIC_API + "/post/" + slug
-  );
+  const { data }: { data: Post } = await api.get(`/post/${slug}`);
 
   return (
     <>
