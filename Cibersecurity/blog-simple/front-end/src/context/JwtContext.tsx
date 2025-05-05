@@ -1,13 +1,19 @@
 "use client";
 
-import { createContext, useContext, useState, ReactNode } from "react";
+import {
+  createContext,
+  useContext,
+  useState,
+  ReactNode,
+  Dispatch,
+} from "react";
 
 interface JwtContextType {
   jwt: string;
-  setJwt: (jwt: string) => void;
+  setJwt: Dispatch<string>;
 }
 
-const JwtContext = createContext<JwtContextType | undefined>(undefined);
+const JwtContext = createContext({} as JwtContextType);
 
 export const JwtProvider = ({ children }: { children: ReactNode }) => {
   const [jwt, setJwt] = useState<string>("");
@@ -21,8 +27,5 @@ export const JwtProvider = ({ children }: { children: ReactNode }) => {
 
 export const useJwtContext = () => {
   const context = useContext(JwtContext);
-  if (!context) {
-    throw new Error("useJwtContext must be used within a JwtProvider");
-  }
   return context;
 };
