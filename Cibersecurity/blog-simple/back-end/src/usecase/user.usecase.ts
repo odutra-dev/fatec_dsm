@@ -30,4 +30,9 @@ export class UserUsecase {
 
     return user;
   }
+
+  async getById(id: number): Promise<userType | null> {
+    const user = await this.userRepository.getById(id);
+    return user;
+  }
 }
