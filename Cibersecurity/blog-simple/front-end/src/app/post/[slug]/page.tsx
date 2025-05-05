@@ -1,6 +1,5 @@
 import Header from "@/components/Header";
 import { api } from "@/utils/api";
-import axios from "axios";
 
 type Post = {
   id: number;
