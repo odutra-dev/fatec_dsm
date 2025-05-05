@@ -3,14 +3,11 @@ import Link from "next/link";
 import { FormEvent, useState } from "react";
 import { useRouter } from "next/navigation";
 import { api } from "@/utils/api";
-import { useJwtContext } from "@/context/JwtContext";
 
 export default function Login() {
   const router = useRouter();
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-
-  const { setJwt } = useJwtContext();
 
   function handleLogin(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -21,8 +18,8 @@ export default function Login() {
         password,
       })
       .then((data) => {
-        setJwt(data.data.jwt);
-        router.push("/");
+        localStorage.setItem("token", data.data.token);
+        router.push("/new");
       });
   }
 
