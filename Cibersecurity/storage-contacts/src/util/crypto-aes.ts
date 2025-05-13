@@ -1,3 +1,4 @@
+import { Injectable } from '@nestjs/common';
 import {
   randomBytes,
   createDecipheriv,
@@ -8,6 +9,7 @@ import {
 const ALGORITHM = 'aes-256-cbc';
 const KEY = createHash('sha256').update(String(process.env.AES_KEY)).digest(); // deve ter 32 bytes
 
+@Injectable()
 export class CryptoAES {
   encrypt(text: string): string {
     const IV = randomBytes(16); // 16 bytes = 128 bits
