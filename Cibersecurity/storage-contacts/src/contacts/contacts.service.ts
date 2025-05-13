@@ -5,7 +5,7 @@ import {
 } from '@nestjs/common';
 import { CreateContactDto } from './dto/create-contact.dto';
 import { UpdateContactDto } from './dto/update-contact.dto';
-import { prisma } from 'src/lib/prismaClient';
+import { PrismaService } from 'src/lib/prismaService';
 import { CryptoAES } from '../util/crypto-aes';
 import { UserService } from 'src/user/user.service';
 
@@ -14,6 +14,7 @@ export class ContactsService {
   constructor(
     private readonly crypto: CryptoAES,
     private readonly userService: UserService,
+    private readonly prismaService: PrismaService,
   ) {}
 
   async create(createContactDto: CreateContactDto) {
@@ -23,13 +24,13 @@ export class ContactsService {
     const encryptedName = this.crypto.encrypt(createContactDto.name);
     createContactDto.name = encryptedName;
 
-    return await prisma.contact.create({ data: createContactDto });
+    return await this.prismaService.contact.create({ data: createContactDto });
   }
 
   async findAllByUser(id: string) {
     const user = await this.userService.findOne(id);
 
-    const contacts = await prisma.contact.findMany({
+    const contacts = await this.prismaService.contact.findMany({
       where: { userId: user.id },
     });
 
@@ -42,7 +43,9 @@ export class ContactsService {
   }
 
   async findOne(id: string) {
-    const contact = await prisma.contact.findUnique({ where: { id } });
+    const contact = await this.prismaService.contact.findUnique({
+      where: { id },
+    });
 
     if (!id) {
       throw new BadRequestException('Id is required');
@@ -62,13 +65,13 @@ export class ContactsService {
   async update(id: string, updateContactDto: UpdateContactDto) {
     await this.findOne(id);
 
-    return await prisma.contact.update({
+    return await this.prismaService.contact.update({
       where: { id },
       data: updateContactDto,
     });
   }
 
   async remove(id: string) {
-    return await prisma.contact.delete({ where: { id } });
+    return await this.prismaService.contact.delete({ where: { id } });
   }
 }
