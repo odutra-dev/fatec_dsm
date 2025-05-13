@@ -7,10 +7,15 @@ import { CreateContactDto } from './dto/create-contact.dto';
 import { UpdateContactDto } from './dto/update-contact.dto';
 import { prisma } from 'src/lib/prismaClient';
 import { CryptoAES } from '../util/crypto-aes';
+import { UserService } from 'src/user/user.service';
 
 @Injectable()
 export class ContactsService {
-  private crypto: CryptoAES = new CryptoAES();
+  constructor(
+    private readonly crypto: CryptoAES,
+    private readonly userService: UserService,
+  ) {}
+
   async create(createContactDto: CreateContactDto) {
     const encryptedPhone = this.crypto.encrypt(createContactDto.phone);
     createContactDto.phone = encryptedPhone;
@@ -19,6 +24,16 @@ export class ContactsService {
     createContactDto.name = encryptedName;
 
     return await prisma.contact.create({ data: createContactDto });
+  }
+
+  async findAllByUser(id: string) {
+    const user = await this.userService.findOne(id);
+
+    const contacts = await prisma.contact.findMany({
+      where: { userId: user.id },
+    });
+
+    return contacts;
   }
 
   async findOne(id: string) {

@@ -29,6 +29,12 @@ export class ContactsController {
     return this.contactsService.findOne(id);
   }
 
+  @Get('findAllByUser/:id')
+  @HttpCode(HttpStatus.OK)
+  findAllByUser(@Param('id') id: string) {
+    return this.contactsService.findAllByUser(id);
+  }
+
   @Patch(':id')
   @HttpCode(HttpStatus.NO_CONTENT)
   update(@Param('id') id: string, @Body() updateContactDto: UpdateContactDto) {
