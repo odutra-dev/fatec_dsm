@@ -1,27 +1,27 @@
-import { randomBytes, createCipheriv, createDecipheriv } from 'crypto';
+import {
+  randomBytes,
+  createDecipheriv,
+  createHash,
+  createCipheriv,
+} from 'crypto';
 
-const ALGORITHM = process.env.ALGORITHM ?? 'aes-256-cbc';
-const KEY = randomBytes(32); // 32 bytes = 256 bits
-const IV = randomBytes(16); // 16 bytes = 128 bits
+const ALGORITHM = 'aes-256-cbc';
+const KEY = createHash('sha256').update(String(process.env.AES_KEY)).digest(); // deve ter 32 bytes
 
 export class CryptoAES {
-  encrypt(text: string) {
+  encrypt(text: string): string {
+    const IV = randomBytes(16); // 16 bytes = 128 bits
     const cipher = createCipheriv(ALGORITHM, KEY, IV);
     let encrypted = cipher.update(text, 'utf8', 'hex');
     encrypted += cipher.final('hex');
-    return {
-      iv: IV.toString('hex'),
-      encryptedData: encrypted,
-    };
+    return `${IV.toString('hex')}:${encrypted}`;
   }
 
   // Função para descriptografar
-  decrypt(encryptedData: string, ivHex: string) {
-    const decipher = createDecipheriv(
-      ALGORITHM,
-      KEY,
-      Buffer.from(ivHex, 'hex'),
-    );
+  decrypt(payload: string): string {
+    const [ivHex, encryptedData] = payload.split(':');
+    const iv = Buffer.from(ivHex, 'hex');
+    const decipher = createDecipheriv(ALGORITHM, KEY, iv);
     let decrypted = decipher.update(encryptedData, 'hex', 'utf8');
     decrypted += decipher.final('utf8');
     return decrypted;
