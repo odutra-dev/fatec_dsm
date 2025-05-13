@@ -8,6 +8,7 @@ import {
   Delete,
   HttpCode,
   HttpStatus,
+  Query,
 } from '@nestjs/common';
 import { ContactsService } from './contacts.service';
 import { CreateContactDto } from './dto/create-contact.dto';
@@ -31,8 +32,14 @@ export class ContactsController {
 
   @Get('findAllByUser/:id')
   @HttpCode(HttpStatus.OK)
-  findAllByUser(@Param('id') id: string) {
-    return this.contactsService.findAllByUser(id);
+  findAllByUser(
+    @Param('id') id: string,
+    @Query('limit') take: number,
+    @Query('page') skip: number,
+  ) {
+    skip = skip - 1;
+
+    return this.contactsService.findAllByUser(id, take, skip);
   }
 
   @Patch(':id')

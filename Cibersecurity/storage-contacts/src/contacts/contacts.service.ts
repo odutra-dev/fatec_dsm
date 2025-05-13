@@ -27,11 +27,13 @@ export class ContactsService {
     return await this.prismaService.contact.create({ data: createContactDto });
   }
 
-  async findAllByUser(id: string) {
+  async findAllByUser(id: string, take: number, skip: number) {
     const user = await this.userService.findOne(id);
 
     const contacts = await this.prismaService.contact.findMany({
       where: { userId: user.id },
+      take,
+      skip,
     });
 
     contacts.forEach((contact) => {
