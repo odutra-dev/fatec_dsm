@@ -33,6 +33,11 @@ export class ContactsService {
       where: { userId: user.id },
     });
 
+    contacts.forEach((contact) => {
+      contact.name = this.crypto.decrypt(contact.name);
+      contact.phone = this.crypto.decrypt(contact.phone);
+    });
+
     return contacts;
   }
 
