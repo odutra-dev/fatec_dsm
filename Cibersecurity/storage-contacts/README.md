@@ -1,98 +1,45 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# Storage Contacts
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+> ## Objetivo
+>
+> Explorar o funcionamento interno do algoritmo de criptografia simétrica AES-256 e praticar sua
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+### Introdução Teórica
 
-## Description
+---
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Em um mundo que a tecnologia evolui cada dia rapidamente, a segurança da informação se tornou uma preocupação global. A criptografia, uma ferramenta fundamental para proteger dados sensíveis, e uma das ferramentas mais utilizadas para garantir a confidencialidade e integridade dos dados. Um algoritmo que se destaca é **AES-256**, um algoritmo de criptografia simétrica e que dizem ser imbátivel.
 
-## Project setup
+O algoritmo AES têm 3 modos de operação: **AES-128**, **AES-192** e **AES-256**. A principal diferença entre eles reside na quantidade de bits usados para criptografia.
 
-```bash
-$ pnpm install
-```
+**AES-128**: Usa uma chave de 128 bits e realiza 10 rodadas de criptografia. Apesar de ser o mais rápido entre os três, oferece o menor nível de segurança, mas ainda assim é robusto para a maioria das aplicações.
 
-## Compile and run the project
+**AES-192**: Com uma chave de 192 bits, esta versão realiza 12 rodadas de criptografia. Oferece um nível intermediário de segurança, equilibrando eficácia e eficiência.
 
-```bash
-# development
-$ pnpm run start
+**AES-256**: Sendo o mais seguro dos três, utiliza uma chave de 256 bits e realiza 14 rodadas de criptografia. Além disso, com a tecnologia disponível atualmente, consideramos essa versão praticamente inquebrável. Portanto, isso torna o AES-256 a escolha preferida para situações que exigem alta confidencialidade e segurança.
 
-# watch mode
-$ pnpm run start:dev
+O AES-256 passa por uma serie de etapas para realizar a criptografia, sendo elas:
 
-# production mode
-$ pnpm run start:prod
-```
+**Criptografia Simétrica**: A criptografia simétrica consiste em criptografar e descriptografar dados utilizando a mesma chave para ambas as operações.
 
-## Run tests
+**256 bits de Segurança**: O AES-256 oferece 256 bits de segurança, o que significa que ele pode criptografar e descriptografar dados de 256 bits de tamanho. Além de ser virtualmente imune a ataques de forçagem bruta.
 
-```bash
-# unit tests
-$ pnpm run test
+**Processo de Criptografia**: 14 rodadas de substituição, permutação e mistura de dados, tornando a informação original indecifrável sem a chave correta.
 
-# e2e tests
-$ pnpm run test:e2e
+[![Imagem demostrativa de como o AES-256 funciona](https://pronnus.com.br/wp-content/uploads/2024/02/criptografia-256-bits-1024x576.webp)](https://pronnus.com.br/blog/criptografia-aes-256-o-padrao-de-criptografia-inquebravel/)
+Imagem demostrativa de como o AES-256 funciona
 
-# test coverage
-$ pnpm run test:cov
-```
+### Implementação
 
-## Deployment
+---
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
+Eu implementei o Algoritmo usando CBC, que é Advanced Encryption Standard com uma chave de 256 bits no modo Cipher Block Chaining (CBC). Trata-se de um tipo de algoritmo de criptografia de chave simétrica que utiliza uma chave de 256 bits para codificar e decodificar dados.
 
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+> A parte "CBC" do nome refere-se ao modo de cifra em blocos utilizado com o algoritmo. No modo Cipher Block Chaining (CBC), cada bloco de texto simples (plaintext) é combinado (XOR) com o bloco de texto cifrado anterior antes de ser criptografado. Isso garante que os blocos de texto cifrados sejam independentes uns dos outros, o que torna o algoritmo mais seguro.
 
-```bash
-$ pnpm install -g @nestjs/mau
-$ mau deploy
-```
+### Referências
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+---
 
-## Resources
-
-Check out a few resources that may come in handy when working with NestJS:
-
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+https://pronnus.com.br/blog/criptografia-aes-256-o-padrao-de-criptografia-inquebravel/
+https://docs.anchormydata.com/docs/what-is-aes-256-cbc
