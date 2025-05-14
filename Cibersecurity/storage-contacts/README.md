@@ -3,6 +3,7 @@
 > ## Objetivo
 >
 > Explorar o funcionamento interno do algoritmo de criptografia simétrica AES-256 e praticar sua
+> aplicação através de um exemplo de código em uma linguagem de sua escolha.
 
 ### Introdução Teórica
 
@@ -42,4 +43,5 @@ Eu implementei o Algoritmo usando CBC, que é Advanced Encryption Standard com u
 ---
 
 https://pronnus.com.br/blog/criptografia-aes-256-o-padrao-de-criptografia-inquebravel/
+
 https://docs.anchormydata.com/docs/what-is-aes-256-cbc
