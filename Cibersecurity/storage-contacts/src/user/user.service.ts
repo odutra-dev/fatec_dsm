@@ -8,13 +8,16 @@ import { UpdateUserDto } from './dto/update-user.dto';
 import { PrismaService } from 'src/lib/prismaService';
 
 @Injectable()
+// Serviço de usuário com injecção de dependência
 export class UserService {
   constructor(private readonly prismaService: PrismaService) {}
 
+  // Cria um novo usuário com base nos dados fornecidos
   async create(createUserDto: CreateUserDto) {
     return await this.prismaService.user.create({ data: createUserDto });
   }
 
+  // Busca um usuário por ID
   async findOne(id: string) {
     if (!id) {
       throw new BadRequestException('Id is required');
@@ -29,6 +32,7 @@ export class UserService {
     return user;
   }
 
+  // Atualiza um usuário por ID
   async update(id: string, updateUserDto: UpdateUserDto) {
     await this.findOne(id);
 
@@ -38,6 +42,7 @@ export class UserService {
     });
   }
 
+  // Exclui um usuário por ID
   async remove(id: string) {
     await this.findOne(id);
 
