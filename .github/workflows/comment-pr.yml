@@ -14,3 +14,4 @@ jobs:
           message: |
             @DutraGames merge this PR please.
           reactions: rocket, +1
+          github-token: ${{ secrets.SEMATIC }}
