@@ -5,32 +5,39 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
+  // Gerador do prisma client
   provider = "prisma-client-js"
   //output   = "../generated/prisma"
 }
 
 datasource db {
+  // Conexão com o banco
   provider = "postgresql"
+  // URL de conexão
   url      = env("DATABASE_URL")
 }
 
 model User {
+  // Tabela de usuários
   id        String   @id @default(uuid())
   email     String   @unique
   password  String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
+  // Relacionamento de 1 para muitos com contatos
   contacts Contact[]
 }
 
 model Contact {
+  // Tabela de contatos
   id        String   @id @default(uuid())
   name      String
   phone     String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
+  // Relacionamento de muitos para 1 usuário
   userId String
   user   User   @relation(fields: [userId], references: [id])
 }

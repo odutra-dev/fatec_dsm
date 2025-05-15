@@ -1,6 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { Length, IsNotEmpty, IsString, IsPhoneNumber } from 'class-validator';
 
+// DTO de criação de contato com base nos dados fornecidos
 export class CreateContactDto {
   @IsString()
   @IsNotEmpty()

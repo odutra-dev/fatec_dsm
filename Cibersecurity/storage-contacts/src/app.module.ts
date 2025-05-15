@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { UserModule } from './user/user.module';
 import { ContactsModule } from './contacts/contacts.module';
 
+// Módulo principal
 @Module({
   imports: [UserModule, ContactsModule],
   controllers: [AppController],

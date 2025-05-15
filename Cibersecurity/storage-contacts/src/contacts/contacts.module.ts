@@ -5,6 +5,7 @@ import { UserService } from 'src/user/user.service';
 import { CryptoAES } from 'src/util/crypto-aes';
 import { PrismaService } from 'src/lib/prismaService';
 
+// Módulo de contatos com controllers e providers relacionados
 @Module({
   controllers: [ContactsController],
   providers: [ContactsService, UserService, CryptoAES, PrismaService],
