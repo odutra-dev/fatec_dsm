@@ -2,6 +2,7 @@ import { PartialType } from '@nestjs/mapped-types';
 import { CreateContactDto } from './create-contact.dto';
 import { ApiProperty } from '@nestjs/swagger';
 
+// DTO de atualização de contato com base nos dados fornecidos
 export class UpdateContactDto extends PartialType(CreateContactDto) {
   @ApiProperty({ type: String, required: true, example: 'John Doe' })
   name: string;
