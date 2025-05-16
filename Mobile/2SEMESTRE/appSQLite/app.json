@@ -1,0 +1,8 @@
+{
+  "expo": {
+    "scheme": "acme",
+    "plugins": ["expo-router", "expo-sqlite"],
+    "name": "AppSQLite",
+    "slug": "AppSQLite"
+  }
+}
