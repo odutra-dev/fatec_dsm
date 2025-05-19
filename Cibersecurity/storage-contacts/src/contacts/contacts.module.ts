@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
 import { ContactsService } from './contacts.service';
 import { ContactsController } from './contacts.controller';
-import { UserService } from 'src/user/user.service';
-import { CryptoAES } from 'src/util/crypto-aes';
-import { PrismaService } from 'src/lib/prismaService';
+import { UserService } from '../user/user.service';
+import { CryptoAES } from '../util/crypto-aes';
+import { PrismaService } from '../lib/prismaService';
 
 // Módulo de contatos com controllers e providers relacionados
 @Module({

@@ -7,7 +7,7 @@ import { CreateContactDto } from './dto/create-contact.dto';
 import { UpdateContactDto } from './dto/update-contact.dto';
 import { PrismaService } from '../lib/prismaService';
 import { CryptoAES } from '../util/crypto-aes';
-import { UserService } from 'src/user/user.service';
+import { UserService } from '../user/user.service';
 
 @Injectable()
 // Serviço de contatos com funções relacionadas
