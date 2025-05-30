@@ -25,25 +25,25 @@ export default function ListUsers({ item }: Props) {
 
   const deletar = useMutation({
     mutationFn: () => deleteUsuario(item.id),
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["users"] });
-    },
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: ["users"] }),
   });
 
   const atualizar = useMutation({
     mutationFn: () => updateUsuario(item.id, nome, email),
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["users"] });
-    },
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: ["users"] }),
   });
 
   return (
     <View style={styles.card}>
-      <View>
+      <View style={{ paddingRight: 50 }}>
         <Text style={styles.label}>Nome:</Text>
-        <Text style={styles.text}>{item.nome}</Text>
+        <Text style={styles.text} numberOfLines={2} ellipsizeMode="tail">
+          {item.nome}
+        </Text>
         <Text style={styles.label}>Email:</Text>
-        <Text style={styles.text}>{item.email}</Text>
+        <Text style={styles.text} numberOfLines={1} ellipsizeMode="middle">
+          {item.email}
+        </Text>
       </View>
 
       <View style={styles.actions}>
@@ -117,6 +117,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.05,
     shadowOffset: { width: 0, height: 1 },
     shadowRadius: 4,
+    position: "relative",
   },
   label: {
     fontWeight: "bold",
