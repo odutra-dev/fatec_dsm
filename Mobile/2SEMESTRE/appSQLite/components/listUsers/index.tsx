@@ -1,8 +1,14 @@
-import { View, Text, TouchableOpacity, Modal, TextInput } from "react-native";
-
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  Modal,
+  TextInput,
+  StyleSheet,
+} from "react-native";
 import { Feather } from "@expo/vector-icons";
 import { User } from "../../app";
-import { useQuery, useQueryClient, useMutation } from "@tanstack/react-query";
+import { useQueryClient, useMutation } from "@tanstack/react-query";
 import { deleteUsuario, updateUsuario } from "../../db/crud";
 import { useState } from "react";
 
@@ -19,131 +25,78 @@ export default function ListUsers({ item }: Props) {
 
   const deletar = useMutation({
     mutationFn: () => deleteUsuario(item.id),
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["users"] });
-    },
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: ["users"] }),
   });
 
   const atualizar = useMutation({
     mutationFn: () => updateUsuario(item.id, nome, email),
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["users"] });
-    },
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: ["users"] }),
   });
 
   return (
-    <View
-      style={{
-        borderRadius: 8,
-        width: "100%",
-        backgroundColor: "#ddd",
-        padding: 8,
-        marginVertical: 8,
-        position: "relative",
-      }}
-    >
-      <Text>Nome: {item.nome}</Text>
-      <Text>Email: {item.email}</Text>
-      <TouchableOpacity
-        onPress={() => setModalVisible(true)}
-        style={{
-          backgroundColor: "#44e",
-          width: 24,
-          height: 24,
-          justifyContent: "center",
-          position: "absolute",
-          top: 12,
-          right: 44,
-          alignItems: "center",
-        }}
-      >
-        <Feather name="edit-2" size={18} color="#FFFFFF" />
-      </TouchableOpacity>
-      <TouchableOpacity
-        onPress={() => deletar.mutate()}
-        style={{
-          backgroundColor: "#e44",
-          width: 24,
-          height: 24,
-          justifyContent: "center",
-          position: "absolute",
-          top: 12,
-          right: 12,
-          alignItems: "center",
-        }}
-      >
-        <Feather name="trash-2" size={18} color="#FFFFFF" />
-      </TouchableOpacity>
+    <View style={styles.card}>
+      <View style={{ paddingRight: 50 }}>
+        <Text style={styles.label}>Nome:</Text>
+        <Text style={styles.text} numberOfLines={2} ellipsizeMode="tail">
+          {item.nome}
+        </Text>
+        <Text style={styles.label}>Email:</Text>
+        <Text style={styles.text} numberOfLines={1} ellipsizeMode="middle">
+          {item.email}
+        </Text>
+      </View>
 
-      <Modal animationType="fade" transparent={true} visible={modalVisible}>
-        <View
-          style={{
-            flex: 1,
-            justifyContent: "center",
-            alignItems: "center",
-            backgroundColor: "rgba(0, 0, 0, 0.5)",
-          }}
+      <View style={styles.actions}>
+        <TouchableOpacity
+          onPress={() => setModalVisible(true)}
+          style={[styles.iconButton, { backgroundColor: "#0acfcf" }]}
         >
-          <View
-            style={{
-              width: "90%",
-              alignItems: "center",
-              backgroundColor: "#fff",
-              padding: 20,
-              borderRadius: 8,
-              gap: 12,
-            }}
-          >
+          <Feather name="edit-2" size={20} color="#fff" />
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => deletar.mutate()}
+          style={[styles.iconButton, { backgroundColor: "#e44" }]}
+        >
+          <Feather name="trash-2" size={20} color="#fff" />
+        </TouchableOpacity>
+      </View>
+
+      <Modal animationType="fade" transparent visible={modalVisible}>
+        <View style={styles.modalOverlay}>
+          <View style={styles.modalContainer}>
             <TouchableOpacity
               onPress={() => setModalVisible(false)}
-              style={{
-                position: "absolute",
-                top: 12,
-                right: 12,
-              }}
+              style={styles.closeButton}
             >
               <Feather name="x" size={24} color="#000" />
             </TouchableOpacity>
 
-            <Text style={{ fontSize: 18, fontWeight: "bold" }}>
-              Atualizar Usuário
-            </Text>
+            <Text style={styles.modalTitle}>Atualizar Usuário</Text>
+
             <TextInput
               placeholder="Email"
               value={email}
               onChangeText={setEmail}
-              style={{
-                width: "100%",
-                padding: 12,
-                borderRadius: 8,
-                borderColor: "#222",
-                borderWidth: 1,
-              }}
+              style={styles.input}
+              placeholderTextColor="#888"
+              keyboardType="email-address"
             />
             <TextInput
               placeholder="Nome"
-              style={{
-                width: "100%",
-                padding: 12,
-                borderRadius: 8,
-                borderColor: "#222",
-                borderWidth: 1,
-              }}
               value={nome}
               onChangeText={setNome}
+              style={styles.input}
+              placeholderTextColor="#888"
             />
+
             <TouchableOpacity
               onPress={() => {
                 atualizar.mutate();
                 setModalVisible(false);
               }}
-              style={{
-                backgroundColor: "#44e",
-                padding: 12,
-                borderRadius: 8,
-              }}
+              style={styles.updateButton}
             >
-              <Text style={{ color: "#fff" }}>Atualizar</Text>
+              <Text style={styles.updateButtonText}>Atualizar</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -151,3 +104,89 @@ export default function ListUsers({ item }: Props) {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  card: {
+    borderRadius: 10,
+    backgroundColor: "#f9f9f9",
+    padding: 16,
+    marginVertical: 8,
+    width: "100%",
+    elevation: 2,
+    shadowColor: "#000",
+    shadowOpacity: 0.05,
+    shadowOffset: { width: 0, height: 1 },
+    shadowRadius: 4,
+    position: "relative",
+  },
+  label: {
+    fontWeight: "bold",
+    color: "#555",
+    marginTop: 4,
+  },
+  text: {
+    fontSize: 16,
+    color: "#222",
+    marginBottom: 4,
+  },
+  actions: {
+    flexDirection: "row",
+    position: "absolute",
+    right: 12,
+    top: 12,
+    gap: 12,
+  },
+  iconButton: {
+    width: 32,
+    height: 32,
+    borderRadius: 16,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  modalOverlay: {
+    flex: 1,
+    backgroundColor: "rgba(0,0,0,0.5)",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  modalContainer: {
+    width: "90%",
+    backgroundColor: "#fff",
+    borderRadius: 10,
+    padding: 20,
+    alignItems: "center",
+    gap: 12,
+  },
+  closeButton: {
+    position: "absolute",
+    right: 12,
+    top: 12,
+  },
+  modalTitle: {
+    fontSize: 20,
+    fontWeight: "700",
+    marginBottom: 12,
+    color: "#222",
+  },
+  input: {
+    width: "100%",
+    padding: 14,
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: "#ccc",
+    backgroundColor: "#f1f1f1",
+    fontSize: 16,
+  },
+  updateButton: {
+    backgroundColor: "#0acfcf",
+    paddingVertical: 12,
+    paddingHorizontal: 24,
+    borderRadius: 8,
+    marginTop: 8,
+  },
+  updateButtonText: {
+    color: "#fff",
+    fontWeight: "bold",
+    fontSize: 16,
+  },
+});

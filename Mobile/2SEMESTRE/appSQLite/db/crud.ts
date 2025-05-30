@@ -8,7 +8,8 @@ export async function Crud() {
       CREATE TABLE IF NOT EXISTS usuario (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         nome TEXT NOT NULL,
-        email TEXT NOT NULL
+        email TEXT NOT NULL,
+        password TEXT NOT NULL
       );
     `);
     console.log("Banco de dados inicializado com sucesso!");
@@ -17,19 +18,24 @@ export async function Crud() {
   }
 }
 
-export async function insertUsuario(nome: string, email: string) {
+export async function insertUsuario(
+  nome: string,
+  email: string,
+  password: string
+) {
   try {
     const db = await SQLite.openDatabaseAsync("sistema");
 
-    if (!nome || !email) {
+    if (!nome || !email || !password) {
       Alert.alert("Erro", "Por favor, preencha todos os campos!");
       return;
     }
 
-    await db.runAsync(`INSERT INTO usuario (nome, email) VALUES (?, ?)`, [
-      nome,
-      email,
-    ]);
+    await db.runAsync(
+      `INSERT INTO usuario (nome, email, password) VALUES (?, ?, ?)`,
+      [nome, email, password]
+    );
+
     Alert.alert("Sucesso", "Usuário cadastro com sucesso!");
   } catch (error) {
     console.error("Erro ao salvar o usuário:", error);
