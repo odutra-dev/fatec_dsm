@@ -15,7 +15,7 @@ export default function Layout() {
   return (
     <SQLiteProvider databaseName="sistema.db">
       <QueryClientProvider client={queryClient}>
-        <Stack initialRouteName="login">
+        <Stack>
           <Stack.Screen name="index" options={{ headerShown: false }} />
           <Stack.Screen name="cadastro" options={{ headerShown: false }} />
           <Stack.Screen name="login" options={{ headerShown: false }} />
