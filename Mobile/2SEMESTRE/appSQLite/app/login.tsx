@@ -48,7 +48,7 @@ export default function Login() {
       queryClient.invalidateQueries({ queryKey: ["users"] });
 
       Alert.alert("Bem-vindo!", `Olá, ${nomeUsuario}`);
-      router.replace("/"); 
+      router.replace("/");
     },
     onError: (error) => {
       Alert.alert("Erro no login", error.message);
