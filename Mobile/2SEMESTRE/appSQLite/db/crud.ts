@@ -35,6 +35,7 @@ export async function insertUsuario(
       `INSERT INTO usuario (nome, email, password) VALUES (?, ?, ?)`,
       [nome, email, password]
     );
+
     Alert.alert("Sucesso", "Usuário cadastro com sucesso!");
   } catch (error) {
     console.error("Erro ao salvar o usuário:", error);

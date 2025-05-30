@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   title: {
-    flex: 1, // Faz o texto ocupar o espaço disponível
+    flex: 1,
     fontSize: 18,
     fontWeight: "700",
     color: "#222",
