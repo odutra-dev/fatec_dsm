@@ -2,51 +2,89 @@
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
-    <title>Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Login - OWASP ZAP Demo</title>
     <style>
       body {
+        margin: 0;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
         background: linear-gradient(to right, #000428, #004e92);
-        font-family: sans-serif;
         display: flex;
         justify-content: center;
         align-items: center;
         height: 100vh;
-        color: white;
+        color: #fff;
       }
-      .container {
-        background: rgba(255, 255, 255, 0.1);
+
+      .login-container {
+        background-color: rgba(255, 255, 255, 0.1);
         padding: 40px;
         border-radius: 12px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        width: 100%;
+        max-width: 400px;
         text-align: center;
       }
-      input,
-      button {
-        display: block;
+
+      h1 {
+        margin-bottom: 30px;
+        font-size: 2em;
+      }
+
+      input[type="text"],
+      input[type="password"] {
         width: 100%;
-        padding: 10px;
+        padding: 12px 16px;
         margin: 10px 0;
         border-radius: 8px;
         border: none;
+        font-size: 1em;
+        box-sizing: border-box;
       }
+
+      input:focus {
+        outline: none;
+        box-shadow: 0 0 5px #00cfff;
+      }
+
       button {
+        width: 100%;
+        padding: 12px;
         background-color: #00cfff;
-        color: black;
-        font-weight: bold;
+        border: none;
+        border-radius: 8px;
+        font-size: 1em;
+        color: #000;
         cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      button:hover {
+        background-color: #00a7cc;
+      }
+
+      a {
+        display: block;
+        margin-top: 15px;
+        color: #ccc;
+        font-size: 0.9em;
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
       }
     </style>
   </head>
   <body>
-    <div class="container">
+    <div class="login-container">
       <h1>Login</h1>
-      <% if (error) { %>
-      <p style="color: red"><%= error %></p>
-      <% } %>
       <form method="POST" action="/login">
         <input type="text" name="username" placeholder="Usuário" required />
         <input type="password" name="password" placeholder="Senha" required />
         <button type="submit">Entrar</button>
       </form>
+      <a href="/">Voltar à Home</a>
     </div>
   </body>
 </html>
