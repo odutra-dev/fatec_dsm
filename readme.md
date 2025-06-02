@@ -27,4 +27,12 @@ Este repositório contém as atividades das disciplinas da Fatec Praia Grande. A
 | Entrega Continua           | [Atividades](DevOps/)                         |
 | Cibersegurança             | [Atividades](Cibersecurity/)                  |
 
+## Projetos Integradores
+
+| **Projeto** | **Semestre** | **Descrição**                                                                                                                                                                                            |
+| ----------- | ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| GenPass     | 2SEMESTRE    | Um projeto que armazena e gera senhas de forma segura. Caso queira acessar o repositório, [clique aqui](https://github.com/DutraGames/Genpass)                                                           |
+| BiblioCPS   | 3SEMESTRE    | Um aplicativo de controle de biblioteca. Caso queira acessar o repositório, [clique aqui](https://github.com/DutraGames/BiblioCPS)                                                                       |
+| USAFAs      | 4SEMESTRE    | Um webapp que seria responsável pelo gerenciamento de USAFAs e organização dos pacientes para a realização de exames. Caso queira acessar o repositório, [clique aqui](https://github.com/iagob2/USAFAs) |
+
 Para mais informações, visite o site oficial da [Fatec Praia Grande](https://fatecpg.cps.sp.gov.br/), que oferece cursos superiores tecnológicos.
