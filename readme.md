@@ -5,10 +5,15 @@
 Este repositório contém as atividades das disciplinas da Fatec Praia Grande. As aulas são ministradas pelos seguintes professores:
 
 - [Alessandro Lima](https://www.linkedin.com/search/results/all/?heroEntityKey=urn%3Ali%3Afsd_profile%3AACoAABY2Ps0BrRVOrSc4wbgwJfTStyHf-N4y9Wo&keywords=Alessandro%20Lima&origin=ENTITY_SEARCH_HOME_HISTORY&sid=3.)
+- [Andrea Garcia Trindade](https://www.linkedin.com/in/andrea-garcia-trindade-2598a523/)
 - [Anderson Bozzo](https://www.linkedin.com/in/anderson-valentino-bozzo-86450726/)
-- [Vagner dos Santos](https://www.linkedin.com/in/vagner-dos-santos/)
 - [Eulaliane Aparecida](https://github.com/Dutragames)
+- [Fernanda](https://github.com/Dutragames)
 - [Jonatas](https://github.com/Dutragames)
+- [Joseffe Oliveira](https://www.linkedin.com/in/joseffe/)
+- [Marcio Galvão](https://github.com/Dutragames)
+- [Simone Romano](https://www.linkedin.com/in/simone-romano-4828b956/)
+- [Vagner dos Santos](https://www.linkedin.com/in/vagner-dos-santos/)
 
 > Você pode acessar todas as atividades disponibilizadas pelos professores neste repositório.
 
