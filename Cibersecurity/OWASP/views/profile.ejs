@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Perfil</title>
+    <style>
+      body {
+        background: #f7f7f7;
+        font-family: Arial, sans-serif;
+        padding: 40px;
+      }
+      .card {
+        background: white;
+        padding: 30px;
+        border-radius: 12px;
+        max-width: 400px;
+        margin: auto;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      }
+      h2 {
+        margin-top: 0;
+      }
+      .button {
+        margin-top: 20px;
+        display: inline-block;
+        background-color: #ff5c5c;
+        color: white;
+        padding: 12px 20px;
+        text-decoration: none;
+        border-radius: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <h2>Bem-vindo, <%= user.username %></h2>
+      <p><strong>ID:</strong> <%= user.id %></p>
+      <p><strong>Senha:</strong> <%= user.password %></p>
+      <a href="/.env" class="button">Ver Credenciais (.env)</a>
+    </div>
+  </body>
+</html>
