@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>OWASP ZAP Demo</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(to right, #1f4037, #99f2c8);
+        color: #333;
+      }
+
+      header {
+        background-color: #0d0d0d;
+        color: white;
+        padding: 20px;
+        text-align: center;
+      }
+
+      header h1 {
+        margin: 0;
+        font-size: 2.8em;
+      }
+
+      nav {
+        margin-top: 10px;
+      }
+
+      nav a {
+        color: #00ffe5;
+        margin: 0 15px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: color 0.3s ease;
+      }
+
+      nav a:hover {
+        color: #00c8aa;
+      }
+
+      main {
+        max-width: 900px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: #ffffffcc;
+        border-radius: 12px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+      }
+
+      h2 {
+        font-size: 2em;
+        margin-bottom: 20px;
+        text-align: center;
+        color: #1a1a1a;
+      }
+
+      p {
+        font-size: 1.2em;
+        line-height: 1.6;
+        text-align: center;
+        color: #444;
+      }
+
+      form {
+        margin-top: 40px;
+        text-align: center;
+      }
+
+      input[type="text"] {
+        padding: 12px 16px;
+        font-size: 1em;
+        width: 300px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        margin-right: 10px;
+        transition: all 0.2s ease-in-out;
+      }
+
+      input[type="text"]:focus {
+        border-color: #00c8aa;
+        outline: none;
+        box-shadow: 0 0 5px rgba(0, 200, 170, 0.4);
+      }
+
+      button {
+        padding: 12px 20px;
+        font-size: 1em;
+        background-color: #00c8aa;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+      }
+
+      button:hover {
+        background-color: #009e88;
+      }
+
+      footer {
+        text-align: center;
+        padding: 30px;
+        color: #888;
+        font-size: 0.9em;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>OWASP ZAP Demo</h1>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/login">Login</a>
+      </nav>
+    </header>
+
+    <main>
+      <h2>Explorando Vulnerabilidades com OWASP ZAP</h2>
+      <p>
+        Esta aplicação contém falhas intencionais para fins educacionais. Use o
+        <strong>OWASP ZAP</strong> para identificar e explorar vulnerabilidades
+        como <em>SQL Injection</em>, <em>Cross-Site Scripting (XSS)</em> e
+        <em>Exposição de Informações Sensíveis</em>.
+      </p>
+
+      <form action="/search" method="GET">
+        <input
+          type="text"
+          name="q"
+          placeholder="Digite sua pesquisa..."
+          required
+        />
+        <button type="submit">Buscar</button>
+      </form>
+    </main>
+
+    <footer>
+      &copy; 2025 - OWASP ZAP Demo App | Para uso educacional apenas
+    </footer>
+  </body>
+</html>

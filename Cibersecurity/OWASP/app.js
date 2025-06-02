@@ -17,6 +17,11 @@ db.serialize(() => {
   db.run("INSERT INTO users (username, password) VALUES ('user', 'user123')");
 });
 
+// Página inicial vulnerável
+app.get("/", (req, res) => {
+  res.render("home");
+});
+
 // Página de login vulnerável a SQL Injection
 app.get("/login", (req, res) => {
   res.render("login");
