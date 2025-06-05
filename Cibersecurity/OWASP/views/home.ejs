@@ -4,6 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>OWASP ZAP Demo</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      integrity="sha512-..."
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <style>
       body {
         margin: 0;
@@ -63,9 +70,36 @@
         color: #444;
       }
 
+      .tool-card {
+        margin-top: 30px;
+        padding: 20px;
+        background: #f9f9f9cc;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .tool-card h3 {
+        margin-top: 0;
+        color: #0d0d0d;
+        text-align: center;
+      }
+
+      .tool-card i {
+        color: #ff7f50;
+        margin-right: 8px;
+      }
+
       form {
         margin-top: 40px;
         text-align: center;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 10px;
+        font-weight: bold;
+        font-size: 1.1em;
+        color: #333;
       }
 
       input[type="text"] {
@@ -101,23 +135,47 @@
 
       footer {
         text-align: center;
-        padding: 30px;
-        color: #888;
+        padding: 20px;
+        color: #fff;
+        background-color: rgba(0, 0, 0, 0.7);
         font-size: 0.9em;
+        margin-top: 50px;
+        border-top-left-radius: 12px;
+        border-top-right-radius: 12px;
+      }
+
+      .icon-title {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        margin-bottom: 10px;
+      }
+
+      .icon-title i {
+        color: #00c8aa;
       }
     </style>
   </head>
   <body>
     <header>
-      <h1>OWASP ZAP Demo</h1>
+      <div class="icon-title">
+        <i class="fas fa-shield-alt fa-2x"></i>
+        <h1>OWASP ZAP Demo</h1>
+      </div>
       <nav>
-        <a href="/">Home</a>
-        <a href="/login">Login</a>
+        <a href="/"><i class="fas fa-home"></i> Home</a>
+        <a href="/login"><i class="fas fa-sign-in-alt"></i> Login</a>
+        <a href="/apresentacao"
+          ><i class="fas fa-chalkboard-teacher"></i> Apresentação</a
+        >
       </nav>
     </header>
 
     <main>
-      <h2>Explorando Vulnerabilidades com OWASP ZAP</h2>
+      <h2>
+        <i class="fas fa-bug"></i> Explorando Vulnerabilidades com OWASP ZAP
+      </h2>
       <p>
         Esta aplicação contém falhas intencionais para fins educacionais. Use o
         <strong>OWASP ZAP</strong> para identificar e explorar vulnerabilidades
@@ -125,19 +183,78 @@
         <em>Exposição de Informações Sensíveis</em>.
       </p>
 
+      <div class="tool-card">
+        <h3>
+          <i class="fas fa-tools"></i> Sobre o Burp Suite Community Edition
+        </h3>
+        <p>
+          O <strong>Burp Suite CE</strong> é outra poderosa ferramenta gratuita
+          para testes de segurança de aplicações web. Com ela, você pode
+          interceptar requisições, manipular parâmetros, automatizar ataques e
+          muito mais. Assim como o OWASP ZAP, é essencial para profissionais e
+          estudantes de segurança.
+        </p>
+      </div>
+
       <form action="/search" method="GET">
+        <label for="search"><i class="fas fa-search"></i> Pesquisa:</label>
         <input
           type="text"
+          id="search"
           name="q"
           placeholder="Digite sua pesquisa..."
           required
         />
-        <button type="submit">Buscar</button>
+        <button type="submit"><i class="fas fa-search"></i> Buscar</button>
       </form>
     </main>
 
     <footer>
-      &copy; 2025 - OWASP ZAP Demo App | Para uso educacional apenas
+      <div
+        style="
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-around;
+          align-items: flex-start;
+          gap: 20px;
+        "
+      >
+        <div>
+          <h4>Sobre</h4>
+          <p style="text-align: justify; color: #aaa">
+            Esta aplicação foi desenvolvida para a disciplina de
+            <strong>Segurança no Desenvolvimento de Aplicações</strong> da
+            <strong>Fatec PG</strong>.
+          </p>
+        </div>
+
+        <div>
+          <h4>Links Rápidos</h4>
+          <ul style="list-style: none; padding: 0; margin: 0">
+            <li>
+              <a href="/" style="color: #00ffe5; text-decoration: none"
+                ><i class="fas fa-home"></i> Home</a
+              >
+            </li>
+            <li>
+              <a href="/login" style="color: #00ffe5; text-decoration: none"
+                ><i class="fas fa-sign-in-alt"></i> Login</a
+              >
+            </li>
+            <li>
+              <a
+                href="/apresentacao"
+                style="color: #00ffe5; text-decoration: none"
+                ><i class="fas fa-chalkboard-teacher"></i> Apresentação</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <p style="margin-top: 20px; color: #aaa">
+        &copy; 2025 - OWASP ZAP Demo App | Para uso educacional apenas
+      </p>
     </footer>
   </body>
 </html>
