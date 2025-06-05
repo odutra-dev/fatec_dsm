@@ -25,6 +25,10 @@ app.get("/", (req, res) => {
   res.render("home");
 });
 
+app.get("/apresentacao", (req, res) => {
+  res.render("apresentacao");
+});
+
 // Login
 app.get("/login", (req, res) => {
   res.render("login", { error: null });

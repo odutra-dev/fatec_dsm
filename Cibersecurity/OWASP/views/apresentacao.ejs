@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ferramentas de Segurança Web - OWASP ZAP e Burp Suite CE</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Arial", sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+      }
+
+      .presentation-container {
+        width: 95%;
+        max-width: 1200px;
+        height: 90vh;
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        position: relative;
+        overflow: hidden;
+        margin: 0 auto;
+      }
+
+      .slide {
+        width: 100%;
+        height: 100%;
+        padding: 40px 60px 100px 60px;
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        overflow-y: auto;
+        overflow-x: hidden;
+      }
+
+      .slide.active {
+        display: flex;
+        position: absolute;
+      }
+
+      .slide-title {
+        font-size: 3rem;
+        color: #2563eb;
+        margin-bottom: 20px;
+        font-weight: bold;
+      }
+
+      .slide-subtitle {
+        font-size: 1.8rem;
+        color: #2563eb;
+        margin-bottom: 40px;
+        text-align: center;
+      }
+
+      .blue-line {
+        width: 100%;
+        height: 4px;
+        background: #2563eb;
+        margin-bottom: 30px;
+      }
+
+      .logos-container {
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        margin: 40px 0;
+      }
+
+      .logo {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        font-weight: bold;
+        color: white;
+      }
+
+      .logo.zap {
+        background: linear-gradient(45deg, #ff6b35, #2563eb);
+        clip-path: polygon(
+          50% 0%,
+          100% 25%,
+          100% 75%,
+          50% 100%,
+          0% 75%,
+          0% 25%
+        );
+      }
+
+      .logo.burp {
+        background: linear-gradient(45deg, #ff6b35, #2563eb);
+        position: relative;
+      }
+
+      .logo.burp::after {
+        content: "🎯";
+        font-size: 3rem;
+        position: absolute;
+      }
+
+      .points-list {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        margin-top: 20px;
+        margin-bottom: 40px;
+      }
+
+      .point {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        font-size: 1.3rem;
+        padding: 15px;
+        background: rgba(37, 99, 235, 0.05);
+        border-radius: 10px;
+      }
+
+      .icon {
+        width: 30px;
+        height: 30px;
+        background: #2563eb;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: bold;
+        flex-shrink: 0;
+      }
+
+      .card {
+        background: white;
+        border-radius: 15px;
+        padding: 30px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        margin: 20px 0;
+      }
+
+      .cards-container {
+        display: flex;
+        gap: 30px;
+        margin: 30px 0;
+      }
+
+      .card-title {
+        font-size: 1.5rem;
+        color: #2563eb;
+        margin-bottom: 20px;
+        font-weight: bold;
+      }
+
+      .card-subtitle {
+        font-size: 1rem;
+        color: #6b7280;
+        margin-bottom: 10px;
+      }
+
+      .code-block {
+        background: #1f2937;
+        color: #10b981;
+        padding: 15px;
+        border-radius: 8px;
+        font-family: "Courier New", monospace;
+        margin: 10px 0;
+        font-size: 0.9rem;
+      }
+
+      .diagram {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 40px 0;
+        padding: 30px;
+      }
+
+      .diagram-box {
+        padding: 25px;
+        border-radius: 15px;
+        color: white;
+        font-weight: bold;
+        text-align: center;
+        min-width: 150px;
+        position: relative;
+      }
+
+      .diagram-box.browser {
+        background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+      }
+
+      .diagram-box.proxy {
+        background: linear-gradient(135deg, #f59e0b, #d97706);
+      }
+
+      .diagram-box.server {
+        background: linear-gradient(135deg, #10b981, #059669);
+      }
+
+      .arrow {
+        font-size: 2rem;
+        color: #2563eb;
+        margin: 0 10px;
+      }
+
+      .comparison-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 30px 0;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .comparison-table th {
+        background: #1e40af;
+        color: white;
+        padding: 20px;
+        font-weight: bold;
+        font-size: 1.1rem;
+      }
+
+      .comparison-table td {
+        padding: 15px 20px;
+        border-bottom: 1px solid #e5e7eb;
+        font-size: 1rem;
+      }
+
+      .comparison-table tr:nth-child(even) {
+        background: #f8fafc;
+      }
+
+      .highlight-box {
+        background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+        border: 2px solid #2563eb;
+        border-radius: 15px;
+        padding: 25px;
+        margin: 30px 0;
+      }
+
+      .highlight-box h4 {
+        color: #1e40af;
+        font-size: 1.3rem;
+        margin-bottom: 15px;
+      }
+
+      .navigation {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 15px;
+        align-items: center;
+        z-index: 1000;
+        background: rgba(255, 255, 255, 0.95);
+        padding: 10px 20px;
+        border-radius: 30px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(10px);
+      }
+
+      .nav-btn {
+        background: #2563eb;
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        border-radius: 25px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: all 0.3s ease;
+      }
+
+      .nav-btn:hover {
+        background: #1d4ed8;
+        transform: translateY(-2px);
+      }
+
+      .nav-btn:disabled {
+        background: #9ca3af;
+        cursor: not-allowed;
+        transform: none;
+      }
+
+      .slide-counter {
+        background: rgba(37, 99, 235, 0.1);
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-weight: bold;
+        color: #2563eb;
+      }
+
+      .slide-1 .slide-title {
+        text-align: center;
+        margin-bottom: 10px;
+      }
+
+      .slide-1 .slide-subtitle {
+        margin-bottom: 60px;
+      }
+
+      /* Estilo para scrollbar personalizada */
+      .slide::-webkit-scrollbar {
+        width: 8px;
+      }
+
+      .slide::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 10px;
+      }
+
+      .slide::-webkit-scrollbar-thumb {
+        background: #2563eb;
+        border-radius: 10px;
+      }
+
+      .slide::-webkit-scrollbar-thumb:hover {
+        background: #1d4ed8;
+      }
+
+      .slide.active {
+        animation: slideIn 0.5s ease-out;
+      }
+
+      .two-column {
+        display: flex;
+        gap: 40px;
+        align-items: flex-start;
+      }
+
+      .column {
+        flex: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="presentation-container">
+      <!-- Slide 1 -->
+      <div class="slide active" style="display: flex">
+        <h1 class="slide-title">Ferramentas de Segurança Web</h1>
+        <h2 class="slide-subtitle">OWASP ZAP e Burp Suite CE</h2>
+
+        <div class="logos-container">
+          <div class="logo zap">ZAP</div>
+          <div class="logo burp"></div>
+        </div>
+
+        <div class="points-list">
+          <div class="point">
+            <div class="icon">🛡️</div>
+            <span
+              >Vamos explorar duas ferramentas essenciais para segurança web:
+              OWASP ZAP e Burp Suite CE.</span
+            >
+          </div>
+          <div class="point">
+            <div class="icon">⇄</div>
+            <span
+              >Elas atuam como proxies de interceptação para analisar e
+              manipular tráfego web.</span
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="slide">
+        <h1 class="slide-title">O que é OWASP ZAP?</h1>
+        <div class="blue-line"></div>
+
+        <div class="two-column">
+          <div class="column">
+            <div class="card">
+              <div
+                class="logo zap"
+                style="
+                  width: 80px;
+                  height: 80px;
+                  margin: 0 auto 20px;
+                  font-size: 1.5rem;
+                "
+              >
+                ZAP
+              </div>
+              <div class="card-title" style="text-align: center">
+                Zed Attack Proxy
+              </div>
+              <div class="card-subtitle" style="text-align: center">
+                OWASP Foundation
+              </div>
+            </div>
+          </div>
+
+          <div class="column">
+            <div class="points-list">
+              <div class="point">
+                <div class="icon">✓</div>
+                <span
+                  >Ferramenta gratuita e open-source desenvolvida pela
+                  OWASP.</span
+                >
+              </div>
+              <div class="point">
+                <div class="icon">✓</div>
+                <span
+                  >Permite realizar testes manuais e automatizados de
+                  vulnerabilidades.</span
+                >
+              </div>
+              <div class="point">
+                <div class="icon">✓</div>
+                <span
+                  >Inclui spider, scanner, interceptador e integração com
+                  CI/CD.</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="slide">
+        <h1 class="slide-title">O que é Burp Suite CE?</h1>
+        <div class="blue-line"></div>
+
+        <div class="two-column">
+          <div class="column">
+            <div class="card">
+              <div
+                class="logo burp"
+                style="
+                  width: 80px;
+                  height: 80px;
+                  margin: 0 auto 20px;
+                  font-size: 1.5rem;
+                "
+              ></div>
+              <div class="card-title" style="text-align: center">
+                Burp Suite Community Edition
+              </div>
+              <div class="card-subtitle" style="text-align: center">
+                PortSwigger
+              </div>
+            </div>
+          </div>
+
+          <div class="column">
+            <div class="points-list">
+              <div class="point">
+                <div class="icon">✓</div>
+                <span
+                  >Versão gratuita da ferramenta profissional Burp Suite.</span
+                >
+              </div>
+              <div class="point">
+                <div class="icon">✓</div>
+                <span
+                  >Inclui ferramentas como Repeater, Decoder e limitada
+                  funcionalidade do Intruder.</span
+                >
+              </div>
+              <div class="point">
+                <div class="icon">✓</div>
+                <span>Extensões BApps disponíveis para personalização.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 4 -->
+      <div class="slide">
+        <h1 class="slide-title">Como Funciona o Proxy</h1>
+        <div class="blue-line"></div>
+
+        <div class="diagram">
+          <div class="diagram-box browser">🖥️<br />Navegador</div>
+          <div class="arrow">→</div>
+          <div class="diagram-box proxy">⇄<br />Proxy<br />localhost:8080</div>
+          <div class="arrow">→</div>
+          <div class="diagram-box server">🖥️<br />Servidor</div>
+        </div>
+
+        <div class="points-list">
+          <div class="point">
+            <div class="icon">⇄</div>
+            <span
+              >O navegador envia requisições HTTP pelo proxy (ex:
+              localhost:8080).</span
+            >
+          </div>
+          <div class="point">
+            <div class="icon">🔍</div>
+            <span
+              >As ferramentas interceptam, analisam e permitem modificar os
+              dados.</span
+            >
+          </div>
+          <div class="point">
+            <div class="icon">🤖</div>
+            <span
+              >Scanners automáticos detectam vulnerabilidades como XSS, CSRF,
+              SQLi.</span
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 5 -->
+      <div class="slide">
+        <h1 class="slide-title">Exemplo Prático de Exploração</h1>
+        <div class="blue-line"></div>
+
+        <div class="cards-container">
+          <div class="card">
+            <div class="card-title">Modificação de Parâmetros</div>
+            <div class="card-subtitle">// Original</div>
+            <div class="code-block">
+              {"username": "user123", "role": "user"}
+            </div>
+            <div class="card-subtitle">// Modificado</div>
+            <div class="code-block">
+              {"username": "user123", "role": "admin"}
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-title">SQL Injection</div>
+            <div class="card-subtitle">// Original</div>
+            <div class="code-block">username=user123&password=secret</div>
+            <div class="card-subtitle">// Injetado</div>
+            <div class="code-block">
+              username=admin' OR 1=1 --&password=anything
+            </div>
+          </div>
+        </div>
+
+        <div class="points-list">
+          <div class="point">
+            <div class="icon">👤</div>
+            <span
+              >Interceptar login com 'role:user' e modificar para
+              'role:admin'.</span
+            >
+          </div>
+          <div class="point">
+            <div class="icon">🗄️</div>
+            <span>Executar SQL Injection com payloads como ' OR 1=1 --.</span>
+          </div>
+          <div class="point">
+            <div class="icon">⚠️</div>
+            <span>Visualizar impacto e alertas gerados pelo scanner.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 6 -->
+      <div class="slide">
+        <h1 class="slide-title">ZAP vs Burp - Comparação</h1>
+        <div class="blue-line"></div>
+
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>Característica</th>
+              <th>OWASP ZAP</th>
+              <th>Burp Suite CE</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Preço</strong></td>
+              <td>100% gratuito</td>
+              <td>Gratuito com limitações</td>
+            </tr>
+            <tr>
+              <td><strong>Público-alvo</strong></td>
+              <td>Desenvolvedores e iniciantes</td>
+              <td>Pentesters profissionais</td>
+            </tr>
+            <tr>
+              <td><strong>Scanner</strong></td>
+              <td>Completo e integrado</td>
+              <td>Limitado na versão CE</td>
+            </tr>
+            <tr>
+              <td><strong>Interface</strong></td>
+              <td>Mais simples e intuitiva</td>
+              <td>Mais técnica e detalhada</td>
+            </tr>
+            <tr>
+              <td><strong>Extensibilidade</strong></td>
+              <td>Plugins e scripts</td>
+              <td>BApps (extensões)</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="point">
+          <div class="icon">✓</div>
+          <span
+            >Ambas têm extensões e funcionalidades práticas para testes.</span
+          >
+        </div>
+      </div>
+
+      <!-- Slide 7 -->
+      <div class="slide">
+        <h1 class="slide-title">Quando Usar Cada Um</h1>
+        <div class="blue-line"></div>
+
+        <div class="cards-container">
+          <div class="card">
+            <div
+              class="logo zap"
+              style="
+                width: 60px;
+                height: 60px;
+                margin: 0 auto 20px;
+                font-size: 1.2rem;
+              "
+            >
+              ZAP
+            </div>
+            <div class="card-title" style="text-align: center">OWASP ZAP</div>
+
+            <div class="points-list">
+              <div class="point">
+                <div class="icon">📝</div>
+                <span>Testes durante o desenvolvimento</span>
+              </div>
+              <div class="point">
+                <div class="icon">🤖</div>
+                <span>Automação em pipelines CI/CD</span>
+              </div>
+              <div class="point">
+                <div class="icon">🎓</div>
+                <span>Aprendizado de segurança web</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div
+              class="logo burp"
+              style="
+                width: 60px;
+                height: 60px;
+                margin: 0 auto 20px;
+                font-size: 1.2rem;
+              "
+            ></div>
+            <div class="card-title" style="text-align: center">
+              Burp Suite CE
+            </div>
+
+            <div class="points-list">
+              <div class="point">
+                <div class="icon">🔍</div>
+                <span>Análises manuais detalhadas</span>
+              </div>
+              <div class="point">
+                <div class="icon">🏢</div>
+                <span>Pentests profissionais</span>
+              </div>
+              <div class="point">
+                <div class="icon">🎛️</div>
+                <span>Controle avançado de requisições</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="point" style="text-align: center; margin-top: 30px">
+          <div class="icon">🏆</div>
+          <span
+            >Ambas podem ser usadas em bug bounty e projetos de segurança.</span
+          >
+        </div>
+      </div>
+
+      <!-- Slide 8 -->
+      <div class="slide">
+        <h1 class="slide-title">Conclusão e Boas Práticas</h1>
+        <div class="blue-line"></div>
+
+        <div class="points-list">
+          <div class="point">
+            <div class="icon">🛡️</div>
+            <span
+              >Ferramentas como ZAP e Burp aumentam a segurança das aplicações
+              web.</span
+            >
+          </div>
+          <div class="point">
+            <div class="icon">🧪</div>
+            <span
+              >Use ambientes de teste controlados para evitar riscos
+              legais.</span
+            >
+          </div>
+          <div class="point">
+            <div class="icon">🔗</div>
+            <span
+              >Segurança web deve fazer parte do ciclo de desenvolvimento.</span
+            >
+          </div>
+        </div>
+
+        <div class="highlight-box">
+          <h4>Lembre-se:</h4>
+          <p>
+            A segurança não é um produto, mas um processo contínuo. Integre
+            essas ferramentas em seu fluxo de trabalho para identificar e
+            corrigir vulnerabilidades antes que sejam exploradas.
+          </p>
+        </div>
+      </div>
+
+      <!-- Navigation -->
+      <div class="navigation">
+        <button class="nav-btn" id="prevBtn" onclick="changeSlide(-1)">
+          ← Anterior
+        </button>
+        <span class="slide-counter" id="slideCounter">1 / 8</span>
+        <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">
+          Próximo →
+        </button>
+      </div>
+    </div>
+
+    <script>
+      let currentSlide = 0;
+      const slides = document.querySelectorAll(".slide");
+      const totalSlides = slides.length;
+
+      function showSlide(n) {
+        // Hide all slides first
+        slides.forEach((slide) => {
+          slide.classList.remove("active");
+          slide.style.display = "none";
+        });
+
+        // Show current slide
+        currentSlide = (n + totalSlides) % totalSlides;
+        slides[currentSlide].classList.add("active");
+        slides[currentSlide].style.display = "flex";
+
+        // Update navigation
+        document.getElementById("slideCounter").textContent = `${
+          currentSlide + 1
+        } / ${totalSlides}`;
+        document.getElementById("prevBtn").disabled = currentSlide === 0;
+        document.getElementById("nextBtn").disabled =
+          currentSlide === totalSlides - 1;
+      }
+
+      function changeSlide(n) {
+        if (currentSlide + n >= 0 && currentSlide + n < totalSlides) {
+          showSlide(currentSlide + n);
+        }
+      }
+
+      // Keyboard navigation
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "ArrowLeft") changeSlide(-1);
+        if (e.key === "ArrowRight") changeSlide(1);
+      });
+
+      // Initialize
+      showSlide(0);
+    </script>
+  </body>
+</html>
