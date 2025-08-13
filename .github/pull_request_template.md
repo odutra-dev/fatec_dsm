@@ -18,4 +18,5 @@
 - [x] Aprendizado de Máquina
 - [x] Entrega Contínua
 - [x] Cibersegurança
+- [x] Processo de Linguagem Natural
 -->
