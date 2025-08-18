@@ -32,6 +32,7 @@ Este repositório contém as atividades das disciplinas da Fatec Praia Grande. A
 | Entrega Continua              | [Atividades](DevOps/)                         |
 | Cibersegurança                | [Atividades](Cibersecurity/)                  |
 | Processo de Linguagem Natural | [Atividades](Processo_Linguagem_Natural/)     |
+| Mineração de Dados            | [Atividades](Mineracao_dados/)                |
 
 ## Projetos Integradores
 
