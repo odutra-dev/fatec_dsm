@@ -19,4 +19,5 @@
 - [x] Entrega Contínua
 - [x] Cibersegurança
 - [x] Processo de Linguagem Natural
+- [x] Mineração de Dados
 -->
