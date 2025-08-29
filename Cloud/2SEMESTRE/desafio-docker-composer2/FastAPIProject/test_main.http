@@ -1,0 +1,37 @@
+GET http://localhost:8000/todos
+Accept: application/json
+
+###
+
+POST http://localhost:8000/todos
+Content-Type: application/json
+
+{
+  "title": "Estudar FastAPI",
+  "description": "Aprender a usar FastAPI com PostgreSQL"
+}
+
+###
+
+GET http://localhost:8000/todos/1
+Accept: application/json
+
+###
+
+PUT http://localhost:8000/todos/1
+Content-Type: application/json
+
+{
+  "title": "Estudar FastAPI",
+  "description": "Finalizar tutorial completo"
+}
+
+###
+
+PATCH http://localhost:8000/todos/1/complete
+Accept: application/json
+
+###
+
+DELETE http://localhost:8000/todos/1
+Accept: application/json
