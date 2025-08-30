@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Computação Cloud 2 - Docker Compose</title>
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f5f7fa;
+        color: #333;
+      }
+
+      header {
+        background-color: #24292e;
+        color: white;
+        padding: 20px 0;
+        text-align: center;
+        font-size: 2em;
+        font-weight: bold;
+      }
+
+      main {
+        padding: 40px 20px;
+        max-width: 900px;
+        margin: auto;
+      }
+
+      .card {
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        margin-bottom: 20px;
+      }
+
+      .card h2 {
+        color: #007acc;
+        margin-bottom: 10px;
+      }
+
+      .port {
+        background-color: #eaf6ff;
+        padding: 8px 12px;
+        border-left: 4px solid #007acc;
+        margin: 5px 0;
+        font-family: monospace;
+      }
+
+      footer {
+        text-align: center;
+        padding: 20px;
+        font-size: 0.9em;
+        color: #777;
+      }
+    </style>
+  </head>
+  <body>
+    <header>Computação Cloud 2 🚀</header>
+    <main>
+      <div class="card">
+        <h2>Sobre o Projeto</h2>
+        <p>
+          Este ambiente foi criado com <strong>Docker Compose</strong> para
+          demonstrar a orquestração de múltiplos containers em um projeto de
+          computação em nuvem.
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>Serviços em Execução</h2>
+        <ul>
+          <li><strong>Nginx</strong> - Servidor Web</li>
+          <li><strong>FastAPI</strong> - Backend Python (API)</li>
+          <li><strong>Node.js</strong> - Backend JavaScript (API)</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>Portas e Acessos</h2>
+        <div class="port">Nginx → http://localhost:8080</div>
+        <div class="port">FastAPI → http://localhost:8000</div>
+        <div class="port">Node.js → http://localhost:3000</div>
+      </div>
+
+      <div class="card">
+        <h2>Arquivo docker-compose.yml</h2>
+        <pre>
+services:
+  web:
+    image: nginx
+    ports:
+      - "8080:80"
+  fastapi:
+    image: dutradev/api-fast
+    ports:
+      - "8000:8000"
+  node:
+    image: dutradev/api-node
+    ports:
+      - "3000:3000"
+        </pre>
+      </div>
+    </main>
+    <footer>Desenvolvido para aula de Computação Cloud 2 – 2025</footer>
+  </body>
+</html>

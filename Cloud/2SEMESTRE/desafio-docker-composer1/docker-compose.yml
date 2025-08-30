@@ -1,0 +1,21 @@
+services:
+  web:
+    image: nginx
+    volumes:
+      - ./templates:/etc/nginx/templates
+      - ./html:/usr/share/nginx/html
+    ports:
+      - "8080:80"
+    environment:
+      - NGINX_HOST=foobar.com
+      - NGINX_PORT=80
+
+  fastapi:
+    image: dutradev/api-fast
+    ports:
+      - "8000:8000"
+
+  node:
+    image: dutradev/api-node
+    ports:
+      - "3000:3000"
