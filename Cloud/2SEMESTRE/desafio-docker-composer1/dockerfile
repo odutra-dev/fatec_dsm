@@ -1,0 +1,16 @@
+# Usa a imagem oficial do Nginx como base
+FROM nginx:latest
+
+# Define variáveis de ambiente (podem ser sobrescritas no docker run)
+ENV NGINX_HOST=foobar.com
+ENV NGINX_PORT=80
+
+# Copia os templates do host para dentro da imagem
+COPY ./templates /etc/nginx/templates
+COPY ./html /usr/share/nginx/html
+
+# Expõe a porta configurada (internamente no container)
+EXPOSE 80
+
+# Comando padrão do Nginx (já vem no ENTRYPOINT da imagem base)
+CMD ["nginx", "-g", "daemon off;"]
