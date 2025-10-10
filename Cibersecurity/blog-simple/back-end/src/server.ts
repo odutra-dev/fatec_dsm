@@ -12,6 +12,7 @@ import { userRoute } from "./routes/user.route";
 import { fastifyJwt } from "@fastify/jwt";
 import { postRoute } from "./routes/post.routes";
 import { fastifyHelmet } from "@fastify/helmet";
+import "dotenv/config";
 
 const app = fastify().withTypeProvider<ZodTypeProvider>();
 
