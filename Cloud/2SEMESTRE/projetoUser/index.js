@@ -13,7 +13,7 @@ app.use(cors());
 app.use("/sistema", routes);
 
 app.use((req, res, next) => {
-  res.status.apply(status.NOT_FOUND).send("Page not found");
+  res.status.apply).send("Page not found");
 });
 
 app.use((req, res, next) => {
