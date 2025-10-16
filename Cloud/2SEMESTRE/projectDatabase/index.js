@@ -1,6 +1,8 @@
 const express = require("express");
 const cors = require("cors");
 const { Sequelize, DataTypes } = require("sequelize");
+const dotenv = require("dotenv");
+dotenv.config();
 
 const app = express();
 const PORT = 3000;
@@ -9,11 +11,16 @@ app.use(cors());
 app.use(express.json());
 
 // Conexão com o banco de dados
-const sequelize = new Sequelize("db_project", "root", "mysqlpsw", {
-  host: "localhost",
-  dialect: "mysql",
-  logging: false,
-});
+const sequelize = new Sequelize(
+  process.env.DB_NAME,
+  process.env.DB_USER,
+  process.env.DB_PASS,
+  {
+    host: process.env.DB_HOST,
+    dialect: "mysql",
+    logging: false,
+  }
+);
 
 // Definição do modelo Usuario
 const Usuario = sequelize.define("Usuario", {
