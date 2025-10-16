@@ -15,9 +15,11 @@
 - [x] Desenvolvimento Web II
 - [x] Desenvolvimento Web III
 - [x] Computação em Nuvem I
+- [x] Computação em Nuvem II
 - [x] Aprendizado de Máquina
 - [x] Entrega Contínua
 - [x] Cibersegurança
 - [x] Processo de Linguagem Natural
 - [x] Mineração de Dados
+- [x] Qualidade de Software
 -->
