@@ -37,11 +37,12 @@ Este repositório contém as atividades das disciplinas da Fatec Praia Grande. A
 
 ## Projetos Integradores
 
-| **Projeto**        | **Semestre** | **Descrição**                                                                                                                                                                                            |
-| ------------------ | ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| GenPass            | 2SEMESTRE    | Um projeto que armazena e gera senhas de forma segura. Caso queira acessar o repositório, [clique aqui](https://github.com/odutra-dev/Genpass)                                                           |
-| BiblioCPS          | 3SEMESTRE    | Um aplicativo de controle de biblioteca. Caso queira acessar o repositório, [clique aqui](https://github.com/odutra-dev/BiblioCPS)                                                                       |
-| USAFAs             | 4SEMESTRE    | Um webapp que seria responsável pelo gerenciamento de USAFAs e organização dos pacientes para a realização de exames. Caso queira acessar o repositório, [clique aqui](https://github.com/iagob2/USAFAs) |
-| Geladinho Santista | 5SEMESTRE    | Um App Mobile e WebApp que o cliente pode pedir um geladinho e os empregados podem gerenciar os pedidos. Caso queira acessar o repositório, [clique aqui](https://github.com/odutra-dev/projeto-5dsm)    |
+| **Projeto**        | **Semestre** | **Descrição**                                                                                                                                                                                                    |
+| ------------------ | ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| GenPass            | 2SEMESTRE    | Um projeto que armazena e gera senhas de forma segura. Caso queira acessar o repositório, [clique aqui](https://github.com/odutra-dev/Genpass)                                                                   |
+| BiblioCPS          | 3SEMESTRE    | Um aplicativo de controle de biblioteca. Caso queira acessar o repositório, [clique aqui](https://github.com/odutra-dev/BiblioCPS)                                                                               |
+| USAFAs             | 4SEMESTRE    | Um webapp que seria responsável pelo gerenciamento de USAFAs e organização dos pacientes para a realização de exames. Caso queira acessar o repositório, [clique aqui](https://github.com/iagob2/USAFAs)         |
+| Geladinho Santista | 5SEMESTRE    | Um App Mobile e WebApp que o cliente pode pedir um geladinho e os empregados podem gerenciar os pedidos. Caso queira acessar o repositório, [clique aqui](https://github.com/odutra-dev/projeto-5dsm)            |
+| PetLar             | 6SEMESTRE    | Um app Mobile, Web e Desktop que o cliente pode solicitar um tutor para o seu pet e os devs podem gerenciar o sistema. Caso queira acessar o repositório, [clique aqui](https://github.com/VitorMarvulle/petlar) |
 
 Para mais informações, visite o site oficial da [Fatec Praia Grande](https://fatecpg.cps.sp.gov.br/), que oferece cursos superiores tecnológicos.
